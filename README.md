@@ -5,7 +5,9 @@ Use [`expo-router`](https://expo.github.io/router) to build native navigation us
 ## 🚀 How to use
 
 ```sh
-npx create-react-native-app -t with-router
+npm install # ลงโมดูล
+npx expo start
+npx expo start --tunnel #ถ้าอันบนไม่ได้
 ```
 
 ## 📝 Notes
