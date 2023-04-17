@@ -1,4 +1,4 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, Alert } from "react-native";
 
 import { useAuth } from "../context/auth";
 import { useRouter } from "expo-router";
@@ -10,6 +10,7 @@ export default function Index() {
     return
   }
   console.log(JSON.stringify(user, null, 4))
+  
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text> This is home screen</Text>
