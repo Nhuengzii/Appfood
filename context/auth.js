@@ -1,4 +1,5 @@
 import { useRouter, useSegments } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React from "react";
 
 const AuthContext = React.createContext(null);
@@ -7,6 +8,7 @@ const AuthContext = React.createContext(null);
 export function useAuth() {
   return React.useContext(AuthContext);
 }
+
 
 // This hook will protect the route access based on user authentication.
 function useProtectedRoute(user) {
@@ -40,6 +42,19 @@ export function Provider(props) {
       value={{
         signIn: () => setAuth({}),
         signOut: () => setAuth(null),
+        signInWithEmailAndPassword: (email, password) => {
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              setAuth(user);
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            });
+        },
         user,
       }}
     >
