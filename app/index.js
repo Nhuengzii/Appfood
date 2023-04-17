@@ -10,6 +10,7 @@ export default function Index() {
     return
   }
   console.log(JSON.stringify(user, null, 4))
+  
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text> This is home screen</Text>
