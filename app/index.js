@@ -1,4 +1,4 @@
-import { Text, View, Button, Alert } from "react-native";
+import { Text, View, Button } from "react-native";
 
 import { useAuth } from "../context/auth";
 import { useRouter } from "expo-router";
