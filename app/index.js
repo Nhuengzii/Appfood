@@ -1,19 +1,13 @@
-import { View, StyleSheet, Image } from "react-native"
+import { Text, View, Button } from "react-native";
 
-export default function App() {
-  const splashImage = require("../assets/splash.png")
+import { useAuth } from "../context/auth";
+
+export default function Index() {
+  const { signOut } = useAuth();
   return (
-    <View style={styles.container}>
-      <Image source={splashImage} />
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text> This is home screen</Text>
+      <Button title={"Sign Out"} onPress={() => signOut()} />
     </View>
-  )
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-})
