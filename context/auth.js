@@ -1,5 +1,6 @@
 import { useRouter, useSegments } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 import React from "react";
 
 const AuthContext = React.createContext(null);
@@ -53,6 +54,7 @@ export function Provider(props) {
             .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
+              console.log(errorCode, errorMessage);
             });
         },
         user,
