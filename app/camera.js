@@ -30,7 +30,7 @@ export default function SmartCamera() {
 
   return (
     <View style={{ flex: 1, backgroundColor: "black" }}>
-      <Text style={{ marginVertical: 50, fontSize: 25, fontWeight: "bold", color: "white" }}>Exit</Text>
+      <Text style={{ marginVertical: 50, fontSize: 25, fontWeight: "bold", color: "white" }} onPress={() => { router.back() }}>Exit</Text>
       <View style={styles.container}>
         <Camera type={type} style={styles.camera}>
           <View>
