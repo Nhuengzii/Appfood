@@ -18,7 +18,7 @@ function setInsert(collection, docRef, name, weight) {
 
 
 export const SetUsers = ({ docData }) => {
-  //usage <SetUsers docData={{collection:string, docRef:string, name:string, weight:int }}  
+  //usage <SetUsers docData={{collection:string, docRef:string, name:string, weight:int }}> 
   setInsert(docData.collection, docData.docRef, docData.name, docData.weight).then((value) => {
     console.log(value)
     return (
