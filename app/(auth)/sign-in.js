@@ -1,7 +1,15 @@
-import { Text, View, TextInput, StyleSheet,ScrollView,SafeAreaView} from "react-native";
 import React, { useState } from "react";
 import { useAuth } from "../../context/auth";
 import { useRouter } from "expo-router";
+import { ScrollView } from "react-native-gesture-handler";
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  StatusBar,
+  TouchableHighlight,
+} from "react-native";
 
 export default function SignIn() {
   const { signIn, signInWithEmailAndPassword } = useAuth();
@@ -9,111 +17,132 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const router = useRouter();
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          // Try setting `flexDirection` to `"row"`.
-          flexDirection: "column",
-        },
-      ]}
-    >
+    <ScrollView>
+      <StatusBar hidden={true} />
 
-      <View style={styles.flex1}>
-        <Text style={[styles.Texttitle, styles.marginatitle]}>
-          ลงชื่อเข้าใช้
-        </Text>
+      <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
+        <View
+          style={[
+            {
+              flex: 1,
+              alignItems: "flex-start",
+              marginTop: 15,
+              marginVertical: 20,
+            },
+          ]}
+        >
+          <Text onPress={{}} style={[styles.Buttonback]}>
+            {"<"}
+          </Text>
+        </View>
       </View>
-      <View style={styles.flex3}>
-        <Text style={[styles.Textfont, styles.text_name_pass]}>ชื่อผู้ใช้</Text>
-        <TextInput
-          value={userName}
-          onChangeText={setUserName}
-          style={styles.TextInput_name_pass}
-        />
-        <Text style={[styles.Textfont, styles.text_name_pass]}>รหัสผ่าน</Text>
-        <TextInput
-          value={password}
-          onChangeText={setPassword}
-          style={styles.TextInput_name_pass}
-          secureTextEntry={true}
-        />
-        <View style={styles.router}>
-          <Text
-            onPress={() => signInWithEmailAndPassword(userName, password)}
-            style={[styles.button, styles.signIn]}
-          >
-            ลงชื่อเข้าใช้
+
+      <View style={[{ flex: 1, flexDirection: "row", alignItems: "flex-end" }]}>
+        <View>
+          <Text style={styles.text_tiele1}>ลงชื่อเข้าใช้</Text>
+        </View>
+      </View>
+
+      <View style={[{ flex: 2, alignItems: "center", marginVertical: 15 }]}>
+        <View style={[styles.styles1, { width: "94%" }]}>
+          <Text style={[styles.Style_Text, { marginVertical: 20 }]}>
+            ชื่อผู้ใช้
           </Text>
-          <Text
-            onPress={() => router.push("/register")}
-            style={[styles.forget, styles.Textfont]}
-          >
-            ลืมรหัสผ่าน?
+          <TextInput
+            style={styles.Style_input}
+            value={userName}
+            onChangeText={setUserName}
+          />
+          <Text style={[styles.Style_Text, { marginVertical: 20 }]}>
+            รหัสผ่าน
           </Text>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={[styles.Textfont]}>หรือ </Text>
+          <TextInput
+            style={styles.Style_input}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={true}
+          />
+          <View
+            style={{
+              flexDirection: "column",
+              alignItems: "center",
+              marginVertical: 20,
+            }}
+          >
+            <TouchableHighlight
+              onPress={() => signInWithEmailAndPassword(userName, password)}
+              underlayColor="#FF7800" style={[styles.button, styles.signIn]}
+            >
+              <View style={{alignItems:"center"}}>
+                <Text style={{color:"white" ,fontSize:25,fontWeight:"600"}}>ลงชื่อเข้าใช้</Text>
+              </View>
+            </TouchableHighlight>
             <Text
               onPress={() => router.push("/register")}
-              style={[styles.Textfont, styles.router]}
+              style={[styles.forget, styles.textgeneral]}
             >
-              สร้างบัญชี
+              ลืมรหัสผ่าน?
             </Text>
+            <View style={{ flexDirection: "row" }}>
+              <Text style={{ fontSize: 18, marginVertical: 10 }}>หรือ </Text>
+              <Text
+                onPress={() => router.push("/register")}
+                style={[styles.router]}
+              >
+                สร้างบัญชี
+              </Text>
+            </View>
           </View>
         </View>
-        
       </View>
-      
-      <View style={styles.flex1}></View>
-
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10,
+  Buttonback: {
+    backgroundColor: "#FF783F",
+    marginLeft: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    padding: 3,
+    fontSize: 30,
+    textAlign: "center",
+    color: "white",
   },
-  flex1: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "flex-end",
-  },
-  flex2: {
-    flex: 2,
-    backgroundColor: "red",
-  },
-  flex3: {
-    flex: 3,
+  styles1: {
     backgroundColor: "#FEF6AE",
-    borderRadius: 20,
+    borderRadius: 30,
     padding: 10,
     elevation: 2,
   },
-  Textfont: {
-    fontSize: 20,
-  },
-  Texttitle: {
+  text_tiele1: {
     fontSize: 30,
+    marginVertical: 10,
+    marginLeft: 20,
+    fontWeight: "bold",
   },
-  marginatitle: {
+  text_tiele2: {
+    fontSize: 18,
+    marginVertical: 10,
+    marginLeft: 20,
+    color: "#237E84",
+    fontWeight: "bold",
+  },
+  Style_Text: {
+    borderColor: "black",
+    fontSize: 20,
+    marginTop: 20,
     marginLeft: 10,
     marginVertical: 20,
   },
-  TextInput_name_pass: {
-    borderColor: "black",
+  Style_input: {
     borderBottomWidth: 1,
-    height: 40,
-    fontSize: 24,
-    marginTop: 10,
-    marginVertical: 30,
-  },
-  text_name_pass: {
-    marginTop: 20,
-    marginVertical: 20,
+    marginVertical: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    fontSize: 18,
   },
   button: {
     borderRadius: 20,
@@ -126,17 +155,17 @@ const styles = StyleSheet.create({
     width: 229,
     backgroundColor: "#FF783F",
     fontSize: 24,
-    marginVertical: 12,
+    marginVertical: 20,
   },
   forget: {
-    backgroundColor: "#FEF6AE",
-    marginVertical: 12,
+    fontSize: 18,
+    marginVertical: 10,
   },
   router: {
-    backgroundColor: "#FEF6AE",
     alignItems: "center",
     color: "#D12121",
-    
+    fontSize: 18,
+    marginVertical: 10,
   },
 });
 

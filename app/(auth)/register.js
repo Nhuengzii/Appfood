@@ -4,13 +4,13 @@ import {
   TextInput,
   StyleSheet,
   StatusBar,
-  checkbox,
   Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { useAuth } from "../../context/auth";
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
+
 export default function Register() {
   const { signIn, createUserWithEmailAndPassword } = useAuth();
   const [userName, setUserName] = useState("");
@@ -76,7 +76,7 @@ export default function Register() {
             }}
           >
             <Text>ฉันยอมรับข้อตกลงและเงื่อนไข นโยบายความเป็นส่วนตัว?</Text>
-            <Text onPress={ButtonAlert} style={[styles.button, styles.signIn]}>
+            <Text onPress={() => createUserWithEmailAndPassword(userName, password)} style={[styles.button, styles.signIn]}>
               ลงทะเบียน
             </Text>
           </View>
@@ -108,12 +108,14 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginVertical: 10,
     marginLeft: 20,
+    fontWeight: "bold",
   },
   text_tiele2: {
     fontSize: 18,
     marginVertical: 10,
     marginLeft: 20,
     color: "#237E84",
+    fontWeight: "bold",
   },
   Style_Text: {
     borderColor: "black",
