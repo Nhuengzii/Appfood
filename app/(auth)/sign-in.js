@@ -31,7 +31,7 @@ export default function SignIn() {
             },
           ]}
         >
-          <Text onPress={{}} style={[styles.Buttonback]}>
+          <Text  style={[styles.Buttonback]}>
             {"<"}
           </Text>
         </View>
