@@ -15,6 +15,8 @@ export default function Register() {
   const { signIn, createUserWithEmailAndPassword } = useAuth();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSelected, setSelection] = useState(false);
   const router = useRouter();
   const ButtonAlert = () =>
@@ -52,9 +54,17 @@ export default function Register() {
       <View style={[{ flex: 2, alignItems: "center", marginVertical: 15 }]}>
         <View style={[styles.styles1, { width: "94%" }]}>
           <Text style={styles.Style_Text}>อีเมล</Text>
-          <TextInput style={styles.Style_input} />
+          <TextInput
+            style={styles.Style_input}
+            value={email}
+            onChangeText={setEmail}
+          />
           <Text style={styles.Style_Text}>หมายเลขโทรศัพท์</Text>
-          <TextInput style={styles.Style_input} />
+          <TextInput
+            style={styles.Style_input}
+            value={phone}
+            onChangeText={setPhone}
+          />
           <Text style={styles.Style_Text}>ชื่อผู้ใช้</Text>
           <TextInput
             style={styles.Style_input}
@@ -76,7 +86,9 @@ export default function Register() {
             }}
           >
             <Text>ฉันยอมรับข้อตกลงและเงื่อนไข นโยบายความเป็นส่วนตัว?</Text>
-            <Text onPress={() => createUserWithEmailAndPassword(userName, password)} style={[styles.button, styles.signIn]}>
+            <Text onPress={() => {
+              createUserWithEmailAndPassword(email, password, userName, phone, false)
+            }} style={[styles.button, styles.signIn]}>
               ลงทะเบียน
             </Text>
           </View>

@@ -1,6 +1,7 @@
 import { useRouter, useSegments } from "expo-router";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { SetUsers } from "../app/db/set-users"
 import React from "react";
 
 const AuthContext = React.createContext(null);
@@ -57,12 +58,18 @@ export function Provider(props) {
               console.log(errorCode, errorMessage);
             });
         },
-        createUserWithEmailAndPassword: (email, password) => {
-          createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword: (email, password, userName, phone, dataFilled) => {
+          createUserWithEmailAndPassword(auth, email, password, userName, phone, dataFilled)
             .then((userCredential) => {
               // Signed in
               const user = userCredential.user;
               setAuth(user);
+              SetUsers("users", user.uid, {
+                username: userName,
+                email: email,
+                phone: phone,
+                dataFilled: dataFilled
+              })
               // ...
             })
             .catch((error) => {
