@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, FlatList, Button} from "react-nativ
 import ShowElement from "../components/ShowElement";
 import { useRouter } from "expo-router";
 
-
+const calWant = 1400;
 
 export default function nutrition () {
     const router = useRouter();
@@ -15,7 +15,7 @@ export default function nutrition () {
                 </View>
                 <Text style={styles.titleCal}>พลังงานที่ต้องการต่อวัน</Text>
                 <View>
-                    <Text>1400 Kcal</Text>
+                    <Text> {calWant} Kcal </Text>
                 </View>
             </View>
 
@@ -27,8 +27,15 @@ export default function nutrition () {
                 style={styles.button}
                 title="back"
                 color="#841584"
-                accessibilityLabel="Learn more about this purple button"
+                accessibilityLabel="Go back index"
                 onPress={() => router.back()}
+            />
+
+            <Button
+                style={styles.button}
+                title="บันทึก"
+                color="#841584"
+                accessibilityLabel="Learn more about this purple button"
             />
                 
             </View>
@@ -91,7 +98,6 @@ export default function nutrition () {
         flex: 1,
         backgroundColor: "orange",
         alignItems: "center",
-        justifyContent: "center",
         padding: 50,
         marginBottom: 10,
     },
