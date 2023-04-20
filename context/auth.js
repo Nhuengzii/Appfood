@@ -12,8 +12,8 @@ export function useAuth() {
 }
 
 
-// This hook will protect the route access based on user authentication.
-/*function useProtectedRoute(user) {
+//This hook will protect the route access based on user authentication.
+function useProtectedRoute(user) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -32,9 +32,10 @@ export function useAuth() {
       router.replace("/");
     }
   }, [user, segments]);
-}*/
+}
 
-function useProtectedRoute(user) {
+//use for testing directly route to your page ,bypassing login page
+/*function useProtectedRoute(user) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -55,7 +56,7 @@ function useProtectedRoute(user) {
       router.replace("/");
     }
   }, [user, segments]);
-}
+}*/
 
 export function Provider(props) {
   const [user, setAuth] = React.useState(null);
