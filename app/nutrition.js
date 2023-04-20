@@ -15,9 +15,10 @@ export default function nutrition () {
                 </View>
                 
                 <Text style={styles.titleCal}>พลังงานที่ต้องการต่อวัน</Text>
-                <View style={styles.containCal}>
+                <View style={styles.containValueCal}>
+                    <Text style={styles.cal}> {calWant} Kcal </Text>
                 </View>
-                <Text style={styles.cal}> {calWant} Kcal </Text>
+                
             </View>
 
             <View style={styles.main}>
@@ -127,6 +128,7 @@ export default function nutrition () {
         paddingTop:0,
         marginTop: 30,
         top: 90,
+        left: 10,
     },
     containCal: {
         backgroundColor: "#fff",
@@ -136,10 +138,19 @@ export default function nutrition () {
     },
     cal: {
         fontSize: 26,
+        //position: "absolute",
+        //backgroundColor: "#fff",
+    },
+
+    containValueCal: {
         position: "absolute",
-        top: 140,
-        marginTop: 20,
-        backgroundColor: "#fff",
+        backgroundColor: "#D1FF96",
+        top: 150,
+        width: "50%",
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 20,
     },
     Bigtitle: {
         fontSize: 96,
