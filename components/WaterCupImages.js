@@ -1,9 +1,9 @@
 import { StyleSheet, Image } from 'react-native';
-const waterImageSource = require('./assets/images/background-image.png');
+const waterImageSource = require('./assets/images/water-cup.png');
 
 export default function WaterImage({ waterImageSource }) {
     return (
-        <Image source={WaterImage} style={styles.image} />
+        <Image source={waterImageSource} style={styles.image} />
     );
 }
 
