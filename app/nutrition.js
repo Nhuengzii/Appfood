@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, ScrollView, FlatList, Button} from "react-native";
 import ShowElement from "../components/ShowElement";
+import { useRouter } from "expo-router";
 
 
 
 export default function nutrition () {
+    const router = useRouter();
     return (
         <ScrollView style={styles.container}>
         
@@ -23,9 +25,10 @@ export default function nutrition () {
             <View style={styles.flooter}>
             <Button
                 style={styles.button}
-                title="Learn More"
+                title="back"
                 color="#841584"
                 accessibilityLabel="Learn more about this purple button"
+                onPress={() => router.back()}
             />
                 
             </View>

@@ -17,6 +17,7 @@ export default function Index() {
       <Text> Hello, {user.email}</Text>
       <Button title={"Find Menu"} onPress={() => router.push("/find-menu")} />
       <Button title={"Sign Out"} onPress={() => signOut()} />
+      <Button title="nutrition" onPress={() => router.push("nutrition")}></Button>
     </View>
   );
 }
