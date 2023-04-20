@@ -10,13 +10,14 @@ export default function nutrition () {
         <ScrollView style={styles.container}>
         
             <View style={styles.header}>
-                <View>
-                    <Text style={styles.title}>ข้อมูลทางโภชนาการ</Text>
+                <View style={styles.cotainTitle}>
+                    <Text style={styles.title}>ข้อมูลทางโภชนาการ</Text>    
                 </View>
+                
                 <Text style={styles.titleCal}>พลังงานที่ต้องการต่อวัน</Text>
-                <View>
-                    <Text> {calWant} Kcal </Text>
+                <View style={styles.containCal}>
                 </View>
+                <Text style={styles.cal}> {calWant} Kcal </Text>
             </View>
 
             <View style={styles.main}>
@@ -66,9 +67,8 @@ export default function nutrition () {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "yellow",
-        paddingBottom: 150,
+        paddingBottom: 210,
         position: "relative",
-        marginBottom: 10,
     },
 
     blockHeader: {
@@ -99,23 +99,47 @@ export default function nutrition () {
         backgroundColor: "orange",
         alignItems: "center",
         padding: 50,
-        marginBottom: 10,
+        marginBottom: 20,
     },
-
+    cotainTitle: {
+        position: "absolute",
+        width: "80%",
+        backgroundColor: "pink",
+        top: 40,
+        height: 75,
+        borderBottomRightRadius: 50,
+        borderTopLeftRadius: 50,
+        justifyContent: "center",
+    },
     
     title: {
         fontSize: 24,
         fontWeight: "bold",
         color: "#000",
         textAlign: "center",
+        justifyContent: "center",
+        
     },
     titleCal: {
-        fontSize: 24,
-        color: "#000",
+        fontSize: 20,
         position: "absolute",
-        bottom: "130%",
+        color: "#000",
+        paddingTop:0,
+        marginTop: 30,
+        top: 90,
+    },
+    containCal: {
+        backgroundColor: "#fff",
+        position: "absolute",
         padding: 0,
-        margin: 0,
+        top: 120,
+    },
+    cal: {
+        fontSize: 26,
+        position: "absolute",
+        top: 140,
+        marginTop: 20,
+        backgroundColor: "#fff",
     },
     Bigtitle: {
         fontSize: 96,
