@@ -3,6 +3,7 @@ import ShowElement from "../components/ShowElement";
 import { useRouter } from "expo-router";
 
 const calWant = 1400;
+const backgroundColorPage = "#fff";
 
 export default function nutrition () {
     const router = useRouter();
@@ -45,11 +46,11 @@ export default function nutrition () {
     );
 }
 
-    const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 15,
-        backgroundColor: "blue",
+        backgroundColor: backgroundColorPage,
         flexDirection: "column",
         
     },
