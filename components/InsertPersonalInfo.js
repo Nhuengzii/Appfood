@@ -10,6 +10,12 @@ import { useState } from "react"
 import Dropdown from "./dropdown"
 
 export default function InsertPersonalInfo() {
+  const [career, setCareer] = useState("");
+  const careerData = ["รับข้าราชการ", "ข้าราชการบำนาญ", "เกษตรกร", "ธุรกิจส่วนตัว", "นักข่าว", "จิตรกร", "ศิลปิน"];
+
+  const [disease, setDisease] = useState("");
+  const diseaseData = ["โรคเบาหวาน", "โรคความดันโลหิตสูง", "โรคหัวใจ", "โรคโลหิตจาง", "โรคไต", "โรคภูมิแพ้", "โรคหอบหืด", "โรคอ้วน"];
+
   return (
     <View style={styles.container}>
       <View style={styles.oneChildContainer}>
@@ -41,9 +47,21 @@ export default function InsertPersonalInfo() {
         </View>
       </View>
 
-      <View>
-        <Dropdown label={"Select Item"} />
+      <View style={styles.oneChildContainer}>
+        <Text style={styles.textAboveInput}>อาชีพ</Text>
+        <Dropdown label={"----------"} data={careerData} onSelect={(selected) => { setCareer(selected) }} />
       </View>
+
+      <View style={styles.oneChildContainer}>
+        <Text style={styles.textAboveInput}>โรคประจำตัว</Text>
+        <Dropdown label={"----------"} data={diseaseData} onSelect={(selected) => { setDisease(selected) }} />
+      </View>
+
+      <View style={styles.oneChildContainer}>
+        <Text style={styles.textAboveInput}>ประวัติการแพ้อาหาร</Text>
+        <TextInput style={styles.inputBox} />
+      </View>
+
 
     </View>
   )
@@ -58,18 +76,19 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "space-around",
     alignItems: "center",
+    paddingVertical: 10
   },
   oneChildContainer: {
     width: "90%",
     flex: 1,
     alignItems: "stretch",
     marginHorizontal: 20,
-    marginVertical: 10,
+    marginVertical: 5,
   },
   twoChildContainer: {
     width: "90%",
     flex: 1,
-    marginVertical: 10,
+    marginVertical: 5,
     flexDirection: "row",
     justifyContent: "space-between"
   },
