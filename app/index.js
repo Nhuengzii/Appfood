@@ -9,7 +9,6 @@ export default function Index() {
   if (user === null) {
     return
   }
-  console.log(JSON.stringify(user, null, 4))
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
