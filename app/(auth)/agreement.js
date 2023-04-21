@@ -1,13 +1,23 @@
-import { Text } from "react-native"
+import { Text, ScrollView } from "react-native"
 
 export default function agreement() {
   return (
-    <Text style={{ fontSize: 55 }}>
-      เอาเงิน เอาเงินเยอะๆ
-      เอาเงิน เอาเงินเยอะๆ
-      เอาเงิน เอาเงินเยอะๆ
-      เอาเงิน เอาเงินเยอะๆ
-      เอาเงิน เอาเงินเยอะๆ
-    </Text>
+    <ScrollView>
+      <Text style={{ fontSize: 30 }}>
+        เอาเงิน เอาเงินเยอะๆ
+        เอาเงิน เอาเงินเยอะๆ
+        เอาเงิน เอาเงินเยอะๆ
+        เอาเงิน เอาเงินเยอะๆ
+        เอาเงิน เอาเงินเยอะๆ
+      </Text>
+      <Text style={{ fontSize: 30 }}>
+        ขอเงิน เอาเงินเยอะๆ
+        ขอเงิน เอาเงินเยอะๆ
+        ขอเงิน เอาเงินเยอะๆ
+        ขอเงิน เอาเงินเยอะๆ
+        ขอเงิน เอาเงินเยอะๆ
+        ขอเงิน เอาเงินเยอะๆ
+      </Text>
+    </ScrollView>
   )
 }
