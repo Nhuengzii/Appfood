@@ -31,7 +31,7 @@ export default function SignIn() {
             },
           ]}
         >
-          <Text  style={[styles.Buttonback]}>
+          <Text style={[styles.Buttonback]}>
             {"<"}
           </Text>
         </View>
@@ -73,8 +73,8 @@ export default function SignIn() {
               onPress={() => signInWithEmailAndPassword(userName, password)}
               underlayColor="#FF7800" style={[styles.button, styles.signIn]}
             >
-              <View style={{alignItems:"center"}}>
-                <Text style={{color:"white" ,fontSize:25,fontWeight:"600"}}>ลงชื่อเข้าใช้</Text>
+              <View style={{ alignItems: "center" }}>
+                <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>ลงชื่อเข้าใช้</Text>
               </View>
             </TouchableHighlight>
             <Text
