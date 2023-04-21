@@ -1,6 +1,7 @@
 import { Text, Button, View, ScrollView, StyleSheet, Pressable, FlatList, SectionList } from "react-native";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
+import ButtonBack from "../components/ButtonBack";
 
 
 
@@ -11,6 +12,12 @@ export default function FindMenu() {
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{flexGrow: 1 }}>
                 <View style={styles.header}>
+                    <View style={styles.containButton}>
+                        <ButtonBack></ButtonBack>
+                    </View>
+                    <View style={styles.containMenu}>
+                        <Text style={styles.titleMenu}>เมนู</Text>
+                    </View>
                     <Text style={styles.title}>ธงโภชนาการ</Text>
                 </View>
                 <View style={styles.sectionPressable}>
@@ -80,12 +87,29 @@ const styles = StyleSheet.create({
         //backgroundColor: "#fff",
         height: 250,
         //borderWidth: 5,
-        //position: "relative",
+        position: "relative",
         alignItems: "center",
         justifyContent: "center",
     },
     containMenu: {
-
+        backgroundColor: "#7D90F3",
+        width: 80,
+        height: 36,
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: 60,
+        left: "22%",
+        borderRadius: 30,
+    },
+    titleMenu: {
+        fontSize: 18,
+        fontWeight: "bold",
+    },
+    containButton: {
+        position: "absolute",
+        left: 20,
+        top: 52,
     },
     sectionPressable: {
         height: 1000,

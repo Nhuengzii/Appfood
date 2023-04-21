@@ -42,7 +42,7 @@ function useProtectedRoute(user) {
 
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
-    router.replace("/nutrition");
+    router.replace("/flagNutrition");
     return
 
     if (
