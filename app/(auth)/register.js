@@ -6,24 +6,20 @@ import {
   StatusBar,
   Alert,
 } from "react-native";
+import Checkbox from "expo-checkbox";
 import React, { useState } from "react";
 import { useAuth } from "../../context/auth";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function Register() {
-  const { signIn, createUserWithEmailAndPassword } = useAuth();
+  const { createUserWithEmailAndPassword } = useAuth();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [isSelected, setSelection] = useState(false);
+  const [accept, setAccept] = useState(false);
   const router = useRouter();
-  const ButtonAlert = () =>
-    Alert.alert("ผิดพลาด", "กรุณากรอกข้อมูลให้ครบถ้วน", [
-      {},
-      { text: "ตกลง", onPress: () => console.log("OK Pressed") },
-    ]);
   return (
     <ScrollView>
       <StatusBar hidden={true} />
@@ -85,8 +81,15 @@ export default function Register() {
               marginVertical: 20,
             }}
           >
-            <Text>ฉันยอมรับข้อตกลงและเงื่อนไข นโยบายความเป็นส่วนตัว?</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Checkbox style={{ marginTop: 0, marginRight: 5 }} value={accept} onValueChange={setAccept} />
+              <Link style={{ color: "blue" }} href="/agreement">ข้อตกลงและเงื่อนไข นโยบายความเป็นส่วนตัว</Link>
+            </View>
             <Text onPress={() => {
+              if (!accept) {
+                Alert.alert("กรุณายอมรับข้อตกลงและเงื่อนไขนโยบายความเป็นส่วนตัว")
+                return
+              }
               createUserWithEmailAndPassword(email, password, userName, phone, false)
             }} style={[styles.button, styles.signIn]}>
               ลงทะเบียน
