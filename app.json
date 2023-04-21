@@ -5,12 +5,23 @@
       "bundler": "metro"
     },
     "name": "Appfood",
-    "slug": "Appfood",
+    "slug": "appfood",
     "plugins": [
-      ["expo-camera",
-      {
-        "cameraPermission": "Allow $(PORDUCT_NAME) to access your camera",
-      }]
-    ]
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PORDUCT_NAME) to access your camera"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "73d7fc6d-1753-4f29-b800-ef0942f8276d"
+      }
+    },
+    "owner": "pbmultimedialab",
+    "android": {
+      "package": "com.pbmultimedialab.appfood"
+    }
   }
 }
