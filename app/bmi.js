@@ -40,7 +40,10 @@ export default function PersonalInfo({ route }) {//รับค่าจาก�
             <View style={{flex:1,marginLeft:30,marginRight:30}}>
                 <View style={{flex:1,flexDirection:"row",alignItems:'flex-start',marginTop:30,marginVertical:20}}>
                     <View style={{flex:1,backgroundColor:"#B1DEFF",width:150,height:150,justifyContent:"center",alignItems:"center",borderRadius:150}}>
-                        <Image style={[styles.stretch]}  source={require('./assets/icon.png')}/>
+                       
+
+
+
                     </View>
                     <View style={{flex:1,marginTop:55,marginLeft:15}}>
                         <Text style={{fontSize:28,fontWeight:'bold'}}>"{value_name}"</Text>
@@ -101,4 +104,4 @@ const styles = StyleSheet.create({
       height: 115,
       resizeMode: 'stretch',
     },
-  });
+  }); //<Image style={[styles.stretch]}  source={require('./assets/splash.png')}/>
