@@ -71,10 +71,6 @@ export default function SignIn() {
           >
             <TouchableHighlight
               onPress={() => {
-                if (accept) {
-                  Alert.alert("กรุณายอมรับข้อตกลงและเงื่อนไขนโยบายความเป็นส่วนตัว")
-                  return
-                }
                 signInWithEmailAndPassword(userName, password)}}
               underlayColor="#FF7800" style={[styles.button, styles.signIn]}
             >
