@@ -42,7 +42,7 @@ function useProtectedRoute(user) {
   const router = useRouter();
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
-    router.replace("/oil"); //   router.replace("/{Pagename}") -->  use to direct to Page "Pagename"
+    router.replace("/vegFruit"); //   router.replace("/{Pagename}") -->  use to direct to Page "Pagename"
     return
   }, [user, segments]);
 }
