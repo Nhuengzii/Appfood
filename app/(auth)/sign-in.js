@@ -70,7 +70,8 @@ export default function SignIn() {
             }}
           >
             <TouchableHighlight
-              onPress={() => signInWithEmailAndPassword(userName, password)}
+              onPress={() => {
+                signInWithEmailAndPassword(userName, password)}}
               underlayColor="#FF7800" style={[styles.button, styles.signIn]}
             >
               <View style={{ alignItems: "center" }}>
