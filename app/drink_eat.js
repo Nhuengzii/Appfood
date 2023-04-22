@@ -25,14 +25,14 @@ const Flex = () => {
           <View style={styles.back_img}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/drink_eat/drink.png")
+              source={require("../assets/images/drink_eat/drink.png")
               }
             />
           </View>
           <View style={styles.back_img}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/drink_eat/eat.png")
+              source={require("../assets/images/drink_eat/eat.png")
             }
             />
           </View>
