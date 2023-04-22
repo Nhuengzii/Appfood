@@ -2,15 +2,14 @@ import {
   StyleSheet,
   View,
   Text,
-  TextInput,
-  ScrollView,
-  StatusBar
 } from "react-native"
 
-import { useState } from "react"
-
+import { GetUsers } from "../app/db/get-users"
+import { useAuth } from "../context/auth"
 
 export default function WelcomeUser() {
+  const { user } = useAuth()
+  const data = GetUsers("users", user.uid);
   return (
     <View style={styles.container}>
 
@@ -23,7 +22,7 @@ export default function WelcomeUser() {
           <Text style={styles.welcomeText}>ยินดีต้อนรับ</Text>
         </View>
         <View style={{ flex: 1, marginTop: 10 }}>
-          <Text style={styles.userNameText}>"คุณจอม"</Text>
+          <Text style={styles.userNameText}>"{data.firstName}"</Text>
         </View>
         <View style={styles.personalInfoWrapper}>
           <Text style={styles.personalInfoText}>ข้อมูลส่วนตัว</Text>
@@ -32,7 +31,6 @@ export default function WelcomeUser() {
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {

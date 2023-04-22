@@ -8,8 +8,34 @@ import {
 } from "react-native"
 
 
+export default function Dropdown({ label, data, onSelect, backgroundColor, width }) {
 
-export default function Dropdown({ label, data, onSelect }) {
+  const styles = StyleSheet.create({
+    button: {
+      backgroundColor: backgroundColor,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: 35,
+      borderRadius: 10,
+      paddingHorizontal: 10,
+      margin: 5,
+    },
+    dropdownWrapper: {
+      alignItems: "center",
+      backgroundColor: backgroundColor,
+      borderRadius: 10,
+      paddingLeft: 10,
+      margin: 5,
+      height: 200
+    },
+    dropdown: {
+      width: width,
+      margin: 20,
+
+    }
+  })
+
   const [visible, setVisible] = useState(false);
   const [select, setSelect] = useState(label);
 
@@ -44,7 +70,7 @@ export default function Dropdown({ label, data, onSelect }) {
   }
 
   return (
-    <View>
+    <View style={{ width: width }}>
 
       <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
         <Text>{select}</Text>
@@ -53,9 +79,10 @@ export default function Dropdown({ label, data, onSelect }) {
       {renderDropdown()}
     </View>
   )
+
 }
 
-
+/*
 const styles = StyleSheet.create({
   button: {
     backgroundColor: "#FFFFFF",
@@ -80,4 +107,4 @@ const styles = StyleSheet.create({
     margin: 20,
 
   }
-})
+})*/
