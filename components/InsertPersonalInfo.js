@@ -10,9 +10,10 @@ import { useState } from "react"
 import Dropdown from "./dropdown"
 import { SetUsersPersonal } from "../app/db/set-users"
 import { useAuth } from "../context/auth"
-
+import { useRouter } from "expo-router"
 
 export default function InsertPersonalInfo() {
+  const router = useRouter();
   const { user } = useAuth();
 
   const careerData = ["--", "รับข้าราชการ", "ข้าราชการบำนาญ", "เกษตรกร", "ธุรกิจส่วนตัว", "นักข่าว", "จิตรกร", "ศิลปิน"];
@@ -96,7 +97,7 @@ export default function InsertPersonalInfo() {
         <TextInput style={styles.inputBox} placeholder={"ไม่มี , แพ้ถั่ว , แพ้นม  ฯลฯ"} value={foodAllergy} onChangeText={setFoodAllergy} />
       </View>
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => { dbAdd(user.uid, docData) }}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => { dbAdd(user.uid, docData); router.push("/information/activity"); }}>
         <Text style={styles.nextButtonText}>ถัดไป</Text>
       </TouchableOpacity>
     </View>
