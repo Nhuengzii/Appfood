@@ -18,6 +18,7 @@ export default function Index() {
       <Button title={"Sign Out"} onPress={() => signOut()} />
       <Button title="nutrition" onPress={() => router.push("nutrition")}></Button>
       <Button title="ธงโภชนาการ" onPress={() => router.push("flagNutrition")}></Button>
+      <Button title="personal" onPress={() => router.push("/information/personal")}></Button>
 
     </View>
   );

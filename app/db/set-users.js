@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 
 
@@ -10,4 +10,16 @@ export const SetUsers = (collection, docRef, docData) => {
     dataFilled: docData.dataFilled
   })
 }
-
+export const SetUsersPersonal = (collection, docRef, docData) => {
+  updateDoc(doc(db, collection, docRef), {
+    firstName: docData.firstName,
+    lastName: docData.lastName,
+    gender: docData.gender,
+    age: docData.age,
+    weight: docData.weight,
+    height: docData.height,
+    career: docData.career,
+    chronicDisease: docData.chronicDisease,
+    foodAllergy: docData.foodAllergy
+  })
+}
