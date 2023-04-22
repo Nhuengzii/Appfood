@@ -22,7 +22,7 @@ export default function WelcomeUser() {
           <Text style={styles.welcomeText}>ยินดีต้อนรับ</Text>
         </View>
         <View style={{ flex: 1, marginTop: 10 }}>
-          <Text style={styles.userNameText}>"คุณ{data.firstName}"</Text>
+          <Text style={styles.userNameText}>"{data.firstName}"</Text>
         </View>
         <View style={styles.personalInfoWrapper}>
           <Text style={styles.personalInfoText}>ข้อมูลส่วนตัว</Text>

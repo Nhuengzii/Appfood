@@ -84,12 +84,12 @@ export default function InsertPersonalInfo() {
 
       <View style={styles.oneChildContainer}>
         <Text style={styles.textAboveInput}>อาชีพ</Text>
-        <Dropdown label={"----------"} data={careerData} onSelect={(selected) => { setCareer(selected) }} />
+        <Dropdown label={"----------"} data={careerData} onSelect={(selected) => { setCareer(selected) }} backgroundColor={"#FFFFFF"} width={"100%"} />
       </View>
 
       <View style={styles.oneChildContainer}>
         <Text style={styles.textAboveInput}>โรคประจำตัว</Text>
-        <Dropdown label={"----------"} data={diseaseData} onSelect={(selected) => { setDisease(selected) }} />
+        <Dropdown label={"----------"} data={diseaseData} onSelect={(selected) => { setDisease(selected) }} backgroundColor={"#FFFFFF"} width={"100%"} />
       </View>
 
       <View style={styles.oneChildContainer}>
