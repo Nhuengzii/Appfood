@@ -13,7 +13,7 @@ export default function FindMenu() {
             <ScrollView contentContainerStyle={{flexGrow: 1 }}>
                 <View style={styles.header}>
                     <View style={styles.containButton}>
-                        <ButtonBack></ButtonBack>
+                        <ButtonBack colorBg={"#C9DDDC"}></ButtonBack>
                     </View>
                     <View style={styles.containMenu}>
                         <Text style={styles.titleMenu}>เมนู</Text>
@@ -22,7 +22,7 @@ export default function FindMenu() {
                 </View>
                 <View style={styles.sectionPressable}>
                     <View style={styles.containFlour}>
-                        <Pressable style={styles.buttonFlour}>
+                        <Pressable onPress={() => router.push("/riceFlour")} style={styles.buttonFlour}>
                             <View style={styles.instandImageFlourLeft}></View>
                             <Text style={styles.titleFlour}>ข้าว-แป้ง</Text>
                             <View style={styles.instandImageFlourLeft}></View>
@@ -30,27 +30,27 @@ export default function FindMenu() {
                         </Pressable>
                     </View>
                     <View style={styles.containVegFruit}>
-                        <Pressable style={styles.buttonVegFruitLeft}>
+                        <Pressable onPress={() => router.push("/vegFruit")} style={styles.buttonVegFruitLeft}>
                             <Text style={styles.titleVeg}>ผัก</Text>
                             <View style={styles.instandImageVeg}></View>
                         </Pressable>
-                        <Pressable style={styles.buttonVegFruitRight}>
+                        <Pressable onPress={() => router.push("/vegFruit")} style={styles.buttonVegFruitRight}>
                             <View style={styles.instandImageFruit}></View>
                             <Text style={styles.titleFruit}>ผลไม้</Text>
                         </Pressable>
                     </View>
                     <View style={styles.containMilkMeat}>
-                        <Pressable style={styles.buttonMilkLeft}>
+                        <Pressable onPress={() => router.push("/meatMilk")} style={styles.buttonMilkLeft}>
                             <View style={styles.instandImage}></View>
                             <Text style={styles.subTitle}>กลุ่มนม</Text>
                         </Pressable>
-                        <Pressable style={styles.buttonMilkRight}>
+                        <Pressable onPress={() => router.push("/meatMilk")} style={styles.buttonMilkRight}>
                             <View style={styles.instandImage}></View>
                             <Text style={styles.subTitle}>เนื้อสัตว์</Text>
                         </Pressable>
                     </View>
                     <View style={styles.containOil}>
-                        <Pressable style={styles.buttonOil}>
+                        <Pressable onPress={() => router.push("/oil")} style={styles.buttonOil}>
                             <View style={styles.instandImageOil}></View>
                             <Text>น้ำมัน</Text>
                             <Text>เครื่องปรุง</Text>
