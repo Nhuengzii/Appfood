@@ -8,42 +8,76 @@ import {
 
 import { useState } from "react"
 import Dropdown from "./dropdown"
+import { SetUsersPersonal } from "../app/db/set-users"
+import { useAuth } from "../context/auth"
+
 
 export default function InsertPersonalInfo() {
-  const [career, setCareer] = useState("");
-  const careerData = ["รับข้าราชการ", "ข้าราชการบำนาญ", "เกษตรกร", "ธุรกิจส่วนตัว", "นักข่าว", "จิตรกร", "ศิลปิน"];
+  const { user } = useAuth();
 
+  const careerData = ["--", "รับข้าราชการ", "ข้าราชการบำนาญ", "เกษตรกร", "ธุรกิจส่วนตัว", "นักข่าว", "จิตรกร", "ศิลปิน"];
+  const diseaseData = ["--", "โรคเบาหวาน", "โรคความดันโลหิตสูง", "โรคหัวใจ", "โรคโลหิตจาง", "โรคไต", "โรคภูมิแพ้", "โรคหอบหืด", "โรคอ้วน"];
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [career, setCareer] = useState("");
   const [disease, setDisease] = useState("");
-  const diseaseData = ["โรคเบาหวาน", "โรคความดันโลหิตสูง", "โรคหัวใจ", "โรคโลหิตจาง", "โรคไต", "โรคภูมิแพ้", "โรคหอบหืด", "โรคอ้วน"];
+  const [foodAllergy, setFoodAllergy] = useState("");
+  const [fullName, setFullName] = useState("");
+
+  const docData = {
+    firstName: firstName,
+    lastName: lastName,
+    gender: gender.trim(),
+    age: parseInt(age.trim()),
+    weight: parseFloat(weight.trim()),
+    height: parseFloat(height.trim()),
+    career: career,
+    chronicDisease: disease,
+    foodAllergy: foodAllergy,
+  }
+
 
   return (
     <View style={styles.container}>
       <View style={styles.oneChildContainer}>
         <Text style={styles.textAboveInput}>ชื่อ-นามสกุล</Text>
-        <TextInput style={styles.inputBox} />
+        <TextInput
+          style={styles.inputBox}
+          placeholder={"ฟ้าใส ใจดี"}
+          value={fullName}
+          onChangeText={(value) => {
+            setFullName(value);
+            setFirstName(value.split(" ")[0]);
+            setLastName(value.split(" ")[1]);
+          }} />
       </View>
 
       <View style={styles.twoChildContainer}>
         <View style={styles.halfRowContainer}>
           <Text style={styles.textAboveInput}>เพศ</Text>
-          <TextInput style={styles.inputBox} />
+          <TextInput style={styles.inputBox} value={gender} onChangeText={setGender} />
         </View>
         <View style={{ flex: 1 }} />
         <View style={styles.halfRowContainer}>
           <Text style={styles.textAboveInput}>อายุ</Text>
-          <TextInput style={styles.inputBox} />
+          <TextInput style={styles.inputBox} value={age} onChangeText={setAge} />
         </View>
       </View>
 
       <View style={styles.twoChildContainer}>
         <View style={styles.halfRowContainer}>
           <Text style={styles.textAboveInput}>น้ำหนัก</Text>
-          <TextInput style={styles.inputBox} />
+          <TextInput style={styles.inputBox} value={weight} onChangeText={setWeight} />
         </View>
         <View style={{ flex: 1 }} />
         <View style={styles.halfRowContainer}>
           <Text style={styles.textAboveInput}>ส่วนสูง</Text>
-          <TextInput style={styles.inputBox} />
+          <TextInput style={styles.inputBox} value={height} onChangeText={setHeight} />
         </View>
       </View>
 
@@ -59,10 +93,10 @@ export default function InsertPersonalInfo() {
 
       <View style={styles.oneChildContainer}>
         <Text style={styles.textAboveInput}>ประวัติการแพ้อาหาร</Text>
-        <TextInput style={styles.inputBox} />
+        <TextInput style={styles.inputBox} placeholder={"ไม่มี , แพ้ถั่ว , แพ้นม  ฯลฯ"} value={foodAllergy} onChangeText={setFoodAllergy} />
       </View>
 
-      <TouchableOpacity style={styles.nextButton}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => { dbAdd(user.uid, docData) }}>
         <Text style={styles.nextButtonText}>ถัดไป</Text>
       </TouchableOpacity>
     </View>
@@ -70,6 +104,10 @@ export default function InsertPersonalInfo() {
 
 }
 
+function dbAdd(uid, docData) {
+
+  SetUsersPersonal("users", uid, docData);
+}
 const styles = StyleSheet.create({
   container: {
     width: "90%",
@@ -107,6 +145,7 @@ const styles = StyleSheet.create({
     height: 35,
     borderRadius: 10,
     margin: 5,
+    paddingHorizontal: 10,
     fontSize: 16
   },
   nextButton: {

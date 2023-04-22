@@ -1,8 +1,12 @@
-import { Text, ScrollView, StatusBar, View } from "react-native";
+import { Text, ScrollView, StatusBar, View, LogBox, v } from "react-native";
+import { useEffect } from "react"
 import WelcomeUser from "../../components/WelcomeUser"
 import InsertPersonalInfo from "../../components/InsertPersonalInfo"
 
 export default function Personal() {
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, [])
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={{ width: "100%", alignItems: "center" }}>

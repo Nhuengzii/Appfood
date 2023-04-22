@@ -28,6 +28,7 @@ export default function Dropdown({ label, data, onSelect }) {
               <TouchableOpacity onPress={() => {
                 setSelect(item);
                 onSelect(item);
+                setVisible(false);
               }}>
                 <Text>{item}</Text>
               </TouchableOpacity>
@@ -35,6 +36,7 @@ export default function Dropdown({ label, data, onSelect }) {
             contentContainerStyle={{ rowGap: 3 }}
             fadingEdgeLength={20}
             persistentScrollbar={true}
+            nestedScrollEnabled={true}
           />
         </View>
       )
