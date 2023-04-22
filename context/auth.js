@@ -35,6 +35,7 @@ function useProtectedRoute(user) {
   }, [user, segments]);
 }
 
+
 /*
 function useProtectedRoute(user) {
   const segments = useSegments();
@@ -42,7 +43,7 @@ function useProtectedRoute(user) {
 
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
-    router.replace("/flagNutrition");
+    router.replace("/riceFlour"); // router.replace("/{Pagename}")
     return
 
     if (
