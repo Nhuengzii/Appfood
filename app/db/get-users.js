@@ -1,16 +1,16 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
-export const GetUsers = (collection, uid) => {
+export const GetUsers = (collection, docRef) => {
+  [data, setData] = useState("");
 
-  const { data, setData } = useState([]);
-  const docRef = db.collection(collection).doc(uid);
-
-  /*
-    useEffect(async () => {
-      docRef.
-    })
-    */
+  const docSnap = getDoc(doc(db, collection, docRef));
+  docSnap.then((doc) => {
+    // console.log(doc.data().firstName);
+    setData(doc.data());
+  })
+  return data
 }
+
 
