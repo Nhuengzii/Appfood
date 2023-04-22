@@ -62,7 +62,9 @@ export default function InsertPersonalInfo() {
         <TextInput style={styles.inputBox} />
       </View>
 
-
+      <TouchableOpacity style={styles.nextButton}>
+        <Text style={styles.nextButtonText}>ถัดไป</Text>
+      </TouchableOpacity>
     </View>
   )
 
@@ -107,4 +109,17 @@ const styles = StyleSheet.create({
     margin: 5,
     fontSize: 16
   },
+  nextButton: {
+    flex: 1,
+    marginTop: 50,
+    borderRadius: 30,
+    margin: 5,
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    backgroundColor: "#ED7E7E"
+  },
+  nextButtonText: {
+    fontSize: 25,
+    color: "#FFFFFF"
+  }
 })
