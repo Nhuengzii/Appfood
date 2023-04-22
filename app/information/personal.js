@@ -1,4 +1,4 @@
-import { Text, ScrollView, StatusBar, View, LogBox, v } from "react-native";
+import { Text, ScrollView, StatusBar, View, LogBox } from "react-native";
 import { useEffect } from "react"
 import WelcomeUser from "../../components/WelcomeUser"
 import InsertPersonalInfo from "../../components/InsertPersonalInfo"
