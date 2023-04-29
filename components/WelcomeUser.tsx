@@ -4,7 +4,7 @@ import {
   Text,
 } from "react-native"
 
-import { GetUsers } from "../app/db/get-users"
+import { GetUsers } from "../firebaseServices/database/getUser";
 import { useAuth } from "../context/auth"
 
 export default function WelcomeUser() {

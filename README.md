@@ -5,7 +5,7 @@ Use [`expo-router`](https://expo.github.io/router) to build native navigation us
 ## 🚀 How to use
 
 ```sh
-npm install # ลงโมดูล
+npx yarn install # ลงโมดูล
 npx expo start
 npx expo start --tunnel #ถ้าอันบนไม่ได้
 ```

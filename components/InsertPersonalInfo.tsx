@@ -8,7 +8,7 @@ import {
 
 import { useState } from "react"
 import Dropdown from "./dropdown"
-import { SetUsersPersonal } from "../app/db/set-users"
+import { SetUsersPersonal } from "../firebaseServices/database/setUser"
 import { useAuth } from "../context/auth"
 import { useRouter } from "expo-router"
 

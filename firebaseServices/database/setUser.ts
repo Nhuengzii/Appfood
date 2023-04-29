@@ -1,5 +1,6 @@
+
 import { doc, setDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebaseConfig";
+import { db } from "../firebaseConfig";
 
 
 export const SetUsers = (collection, docRef, docData) => {

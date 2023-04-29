@@ -4,13 +4,7 @@
     "web": {
       "bundler": "metro"
     },
-    "name": "Appfood",
-    "slug": "Appfood",
-    "plugins": [
-      ["expo-camera",
-      {
-        "cameraPermission": "Allow $(PORDUCT_NAME) to access your camera",
-      }]
-    ]
+    "name": "appfood",
+    "slug": "appfood"
   }
 }

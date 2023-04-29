@@ -1,3 +1,4 @@
+
 import { Text, ScrollView } from "react-native"
 
 export default function agreement() {

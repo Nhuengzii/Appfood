@@ -1,18 +1,22 @@
 import { useRouter, useSegments } from "expo-router";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
-import { SetUsers } from "../app/db/set-users"
-import React from "react";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseServices/firebaseConfig";
+import React, { Context, createContext, useContext } from "react";
+import { SetUsers } from "../firebaseServices/database/setUser";
 
-const AuthContext = React.createContext(null);
-
-// This hook can be used to access the user info.
-export function useAuth() {
-  return React.useContext(AuthContext);
+type AuthenticationContextType = {
+  naiveSignIn: () => void;
+  naiveSignOut: () => void;
+  signInWithEmailAndPassword: (email: string, password: string) => void;
+  createUserWithEmailAndPassword: (email: string, password: string, userName: string, phone: string, dataFilled: boolean) => void;
+  user: any
 }
 
+const AuthContext: Context<AuthenticationContextType | null> = createContext(null);
 
-// This hook will protect the route access based on user authentication.
+function useAuth() {
+  return useContext(AuthContext)
+}
 
 function useProtectedRoute(user) {
   const segments = useSegments();
@@ -35,19 +39,7 @@ function useProtectedRoute(user) {
   }, [user, segments]);
 }
 
-
-/*
-function useProtectedRoute(user) {
-  const segments = useSegments();
-  const router = useRouter();
-  React.useEffect(() => {
-    const inAuthGroup = segments[0] === "(auth)";
-    router.replace("/vegFruit"); //   router.replace("/{Pagename}") -->  use to direct to Page "Pagename"
-    return
-  }, [user, segments]);
-}
-*/
-export function Provider(props) {
+function AuthProvider(props) {
   const [user, setAuth] = React.useState(null);
 
   useProtectedRoute(user);
@@ -55,8 +47,8 @@ export function Provider(props) {
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => setAuth({}),
-        signOut: () => setAuth(null),
+        naiveSignIn: () => setAuth({}),
+        naiveSignOut: () => setAuth(null),
         signInWithEmailAndPassword: (email, password) => {
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -72,7 +64,7 @@ export function Provider(props) {
             });
         },
         createUserWithEmailAndPassword: (email, password, userName, phone, dataFilled) => {
-          createUserWithEmailAndPassword(auth, email, password, userName, phone, dataFilled)
+          createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in
               const user = userCredential.user;
@@ -90,8 +82,7 @@ export function Provider(props) {
               const errorMessage = error.message;
               console.log(errorCode, errorMessage);
             });
-        }
-        ,
+        },
         user,
       }}
     >
@@ -99,3 +90,5 @@ export function Provider(props) {
     </AuthContext.Provider>
   );
 }
+
+export { useAuth, AuthProvider, AuthenticationContextType }
