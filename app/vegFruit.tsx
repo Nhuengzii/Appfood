@@ -36,7 +36,7 @@ export default function VegFruit() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View style={styles.containButton}>
-            <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+            <ButtonBack colorBg={"#8297DF"} colorStyle={"white"}></ButtonBack>
           </View>
           <View style={styles.containTitle}>
             <Text style={styles.title}>ผักและผลไม้</Text>
