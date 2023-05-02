@@ -11,7 +11,7 @@ import React from "react";
 
 export default function WelcomeUser() {
   const { user } = useAuth()
-  const data = GetUsers("users", user.uid);
+  const data = GetUsers("users", user.credential.uid);
   const [username, setUsername] = useState("");
   useEffect(() => {
     if (data != null) {
