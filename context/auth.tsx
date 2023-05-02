@@ -13,7 +13,6 @@ async function storeCredentialData(email, password) {
   try {
     await AsyncStorage.setItem('@myemail', email);
     await AsyncStorage.setItem('@mypassword', password);
-    console.log("Store password succes")
   } catch (e) {
     console.log(e)
   }
@@ -23,7 +22,6 @@ async function getCredentialData() {
   try {
     const email = await AsyncStorage.getItem('@myemail')
     const password = await AsyncStorage.getItem('@mypassword')
-    console.log(email, password, "GEEEEET")
     return { email: email, password: password }
   } catch (e) {
     console.log(e)
