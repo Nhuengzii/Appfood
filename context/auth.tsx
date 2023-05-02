@@ -1,16 +1,26 @@
 import { useRouter, useSegments } from "expo-router";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, User } from "firebase/auth";
 import { auth } from "../firebaseServices/firebaseConfig";
 import React, { Context, createContext, useContext } from "react";
-import { SetUsers } from "../firebaseServices/database/setUser";
 
+import { SetUsers } from "../firebaseServices/database/setUser";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseServices/firebaseConfig"
 
 type AuthenticationContextType = {
   naiveSignIn: () => void;
   naiveSignOut: () => void;
   signInWithEmailAndPassword: (email: string, password: string) => void;
   createUserWithEmailAndPassword: (email: string, password: string, userName: string, phone: string, dataFilled: boolean) => void;
-  user: any
+  user: UserLoginData;
+}
+
+type UserLoginData = {
+  credential: User;
+  username: string;
+  email: string;
+  phone: string;
+  dataFilled: boolean;
 }
 
 const AuthContext: Context<AuthenticationContextType | null> = createContext(null);
@@ -19,7 +29,7 @@ function useAuth() {
   return useContext(AuthContext)
 }
 
-function useProtectedRoute(user) {
+function useProtectedRoute(user: UserLoginData) {
   const segments = useSegments();
   const router = useRouter();
 
@@ -57,7 +67,16 @@ function AuthProvider(props) {
             .then((userCredential) => {
               // Signed in
               const user = userCredential.user;
-              setAuth(user);
+              getDoc(doc(db, "users", user.uid)).then((docs) => {
+                const userLoginData: UserLoginData = {
+                  credential: user,
+                  username: docs.data().username,
+                  email: docs.data().email,
+                  phone: docs.data().phone,
+                  dataFilled: docs.data().dataFilled
+                }
+                setAuth(userLoginData);
+              })
               // ...
             })
             .catch((error) => {

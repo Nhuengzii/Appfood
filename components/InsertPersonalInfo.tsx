@@ -98,7 +98,7 @@ export default function InsertPersonalInfo() {
         <TextInput style={styles.inputBox} placeholder={"ไม่มี , แพ้ถั่ว , แพ้นม  ฯลฯ"} value={foodAllergy} onChangeText={setFoodAllergy} />
       </View>
 
-      <TouchableOpacity style={styles.nextButton} onPress={() => { dbAdd(user.uid, docData); router.push("/information/activity"); }}>
+      <TouchableOpacity style={styles.nextButton} onPress={() => { dbAdd(user.credential.uid, docData); router.push("/information/activity"); }}>
         <Text style={styles.nextButtonText}>ถัดไป</Text>
       </TouchableOpacity>
     </View>

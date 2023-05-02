@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useAuth } from "../context/auth";
 import { useRouter } from "expo-router";
+import React from "react";
 
 export default function Index() {
   const { naiveSignOut, user } = useAuth();
@@ -17,6 +18,7 @@ export default function Index() {
       <Button title="nutrition" onPress={() => router.push("nutrition")}></Button>
       <Button title="ธงโภชนาการ" onPress={() => router.push("flagNutrition")}></Button>
       <Button title="personal" onPress={() => router.push("/information/personal")}></Button>
+      <Button title="dailyActivity" onPress={() => router.push("/information/dailyActivity")} />
     </View>
   );
 }
