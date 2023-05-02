@@ -2,10 +2,34 @@ import { useRouter, useSegments } from "expo-router";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, User } from "firebase/auth";
 import { auth } from "../firebaseServices/firebaseConfig";
 import React, { Context, createContext, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
 
 import { SetUsers } from "../firebaseServices/database/setUser";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseServices/firebaseConfig"
+
+async function storeCredentialData(email, password) {
+  try {
+    await AsyncStorage.setItem('@myemail', email);
+    await AsyncStorage.setItem('@mypassword', password);
+    console.log("Store password succes")
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+async function getCredentialData() {
+  try {
+    const email = await AsyncStorage.getItem('@myemail')
+    const password = await AsyncStorage.getItem('@mypassword')
+    console.log(email, password, "GEEEEET")
+    return { email: email, password: password }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 
 type AuthenticationContextType = {
   naiveSignIn: () => void;
@@ -77,6 +101,7 @@ function AuthProvider(props) {
                 }
                 setAuth(userLoginData);
               })
+              storeCredentialData(email, password);
               // ...
             })
             .catch((error) => {
@@ -98,6 +123,7 @@ function AuthProvider(props) {
                 dataFilled: dataFilled
               })
               // ...
+              storeCredentialData(email, password);
             })
             .catch((error) => {
               const errorCode = error.code;
@@ -113,4 +139,4 @@ function AuthProvider(props) {
   );
 }
 
-export { useAuth, AuthProvider, AuthenticationContextType }
+export { useAuth, AuthProvider, AuthenticationContextType, getCredentialData, storeCredentialData }
