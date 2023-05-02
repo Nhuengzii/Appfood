@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, TextInput, StyleSheet } from "react-native"
 import React, { useState } from "react"
 
 export default function DailyActivityBox() {
   return (
     <View style={styles.boxContainer}>
-      <Text>BoxContainer</Text>
-      <Text>2</Text>
+      <Text style={styles.topText}>กิจกรรมที่ทำ</Text>
+      <TextInput style={styles.inputBox} />
     </View>
   )
 }
@@ -21,6 +21,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFC671",
     width: "100%",
     paddingHorizontal: 10,
-    paddingVertical: 20,
+    paddingVertical: 15,
+  },
+  topText: {
+    flex: 1,
+    backgroundColor: "#666666",
+    fontSize: 16,
+    margin: 5,
+  },
+  inputBox: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+    fontSize: 16,
+    color: "#F32424",
+    marginVertical: 10,
+    marginHorizontal: 7,
   }
 })
