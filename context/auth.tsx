@@ -28,6 +28,15 @@ async function getCredentialData() {
   }
 }
 
+async function removeCredentialData() {
+  try {
+    await AsyncStorage.removeItem('@myemail', () => { console.log("Remove email Succes") })
+    await AsyncStorage.removeItem('@mypassword', () => { console.log("Remove password Succes") })
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 
 type AuthenticationContextType = {
   naiveSignIn: () => void;
@@ -83,7 +92,10 @@ function AuthProvider(props) {
     <AuthContext.Provider
       value={{
         naiveSignIn: () => setAuth({}),
-        naiveSignOut: () => setAuth(null),
+        naiveSignOut: () => {
+          setAuth(null)
+          removeCredentialData()
+        },
         signInWithEmailAndPassword: (email, password) => {
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
