@@ -76,9 +76,13 @@ function useProtectedRoute(user: UserLoginData) {
     ) {
       // Redirect to the sign-in page.
       router.replace("/sign-in");
-    } else if (user && inAuthGroup) {
+    } else if (user && inAuthGroup && (!user.dataFilled)) {
+      // Redirect away from the sign-in page. to tobefill
+      router.replace("/information/tobefill");
+    }
+    else if (user && inAuthGroup && (user.dataFilled)) {
       // Redirect away from the sign-in page.
-      router.replace("/");
+      router.replace("/")
     }
   }, [user, segments]);
 }
