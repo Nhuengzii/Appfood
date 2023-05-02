@@ -4,6 +4,7 @@ import { auth } from "../firebaseServices/firebaseConfig";
 import React, { Context, createContext, useContext } from "react";
 import { SetUsers } from "../firebaseServices/database/setUser";
 
+
 type AuthenticationContextType = {
   naiveSignIn: () => void;
   naiveSignOut: () => void;

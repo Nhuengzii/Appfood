@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
 import { useRouter } from "expo-router";
 import ButtonBack from "../components/ButtonBack";
+import React from "react";
 
 export default function RiceFlour() {
   const router = useRouter();

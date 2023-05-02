@@ -2,9 +2,10 @@ import { Text, Button, View, StyleSheet } from "react-native";
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import ButtonBack from "../components/ButtonBack";
+import React from "react";
 
 
-export default function VegFruit() {
+export default function MeatMilk() {
   const router = useRouter();
   return (
     <View style={styles.container}>

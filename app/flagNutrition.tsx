@@ -1,23 +1,25 @@
-import { Text, Button, View, ScrollView, StyleSheet, Pressable, FlatList, SectionList } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
-import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonBack from "../components/ButtonBack";
+import React from "react";
 
 
 
 
-export default function FindMenu() {
+export default function FlagNutrition() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.header}>
-          <View style={styles.containButton}>
-            <ButtonBack colorBg={"#C9DDDC"} colorStyle={undefined}></ButtonBack>
-          </View>
-          <View style={styles.containMenu}>
-            <Text style={styles.titleMenu}>เมนู</Text>
-          </View>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
+        <View style={styles.navSection}>
+            <View style={styles.containButton}>
+              <ButtonBack colorBg={"#C9DDDC"} colorStyle={undefined}></ButtonBack>
+            </View>
+            <View style={styles.containMenu}>
+              <Text style={styles.titleMenu}>เมนู</Text>
+            </View>
+        </View>
+        <View style={styles.header}>          
           <Text style={styles.title}>ธงโภชนาการ</Text>
         </View>
         <View style={styles.sectionPressable}>
@@ -85,11 +87,21 @@ const styles = StyleSheet.create({
   },
   header: {
     //backgroundColor: "#fff",
-    height: 250,
+    height: 100,
     //borderWidth: 5,
     position: "relative",
     alignItems: "center",
     justifyContent: "center",
+  },
+  navSection: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    bottom: 0,
+    right: 0,
+    height: 150,
+    backgroundColor: "#4A4083",
   },
   containMenu: {
     backgroundColor: "#7D90F3",
@@ -291,7 +303,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     textAlign: "center",
     //position: "absolute",
-    top: 45,
+    top: "-40%",
     //left: "35%",
 
   },

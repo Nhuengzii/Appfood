@@ -1,3 +1,4 @@
+import React from 'react';
 import { StyleSheet, FlatList, View, Text, } from 'react-native';
 
 
@@ -69,8 +70,8 @@ const DataNutrition = [
 
 const Element = ({ nameTitle, detail, amount, unit }) => (
     <View style={styles.sectionElement}>
-        <Text style={styles.subtitle}>{ nameTitle }</Text>
-        <Text style={styles.subtitle}>{ amount }  { unit }</Text>
+        <Text style={styles.subtitleLeft}>{ nameTitle }</Text>
+        <Text style={styles.subtitleRight}>{ amount }  { unit }</Text>
         <Text style={styles.paragrah}>{ detail }</Text>
     </View>
 );
@@ -94,15 +95,15 @@ const styles = StyleSheet.create({
 
     sectionElement: {
         flex: 1,
-        backgroundColor: "green",
-        borderColor: "#000",
+        backgroundColor: "#fff",
+        borderColor: "#FFF7CC",
         borderWidth: 4,
         borderRadius: 30,
         marginBottom: 5,
-        marginTop: 10,
+        marginTop: 5,
         justifyContent: "center",
         alignItems: "center",
-        padding: 40,
+        padding: 50,
     },
     title: {
         fontSize: 24,
@@ -112,12 +113,21 @@ const styles = StyleSheet.create({
         fontSize: 96,
         fontWeight: "bold",
     },
-    subtitle: {
-        fontSize: 26,
+    subtitleLeft: {
+        fontSize: 20,
         color: "#000",
+        alignSelf: 'flex-start',
+        top: -30,
+    },
+    subtitleRight: {
+        fontSize: 20,
+        color: "#000",
+        alignSelf: 'flex-end',
+        top: -60,
     },
     paragrah: {
         fontSize: 16,
         color: "#fff",
+        top: 35,
     },
 });

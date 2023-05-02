@@ -2,6 +2,7 @@ import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { useRouter } from "expo-router";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React from "react";
 
 export default function SmartCamera() {
   const [type, setType] = useState(CameraType.front);

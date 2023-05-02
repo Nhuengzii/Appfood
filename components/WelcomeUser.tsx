@@ -7,6 +7,7 @@ import {
 import { useState, useEffect } from "react"
 import { GetUsers } from "../firebaseServices/database/getUser";
 import { useAuth } from "../context/auth"
+import React from "react";
 
 export default function WelcomeUser() {
   const { user } = useAuth()

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, Button } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Button, Pressable } from "react-native";
 import ShowElement from "../components/ShowElement";
 import { useRouter } from "expo-router";
 
@@ -35,20 +35,18 @@ export default function nutrition() {
       </View>
 
       <View style={styles.flooter}>
-        <Button
-          style={styles.button}
-          title="back"
-          color="#841584"
-          accessibilityLabel="Go back index"
-          onPress={() => router.back()}
-        />
-
-        <Button
-          style={styles.button}
-          title="บันทึก"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        <Pressable onPress={() => router.back()} style={{
+              width: '50%',
+              height: 70,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 30,
+              backgroundColor: "#7ECCED",
+              top: -30,
+              
+          }}>
+            <Text style={styles.titleButton}>บันทึก</Text>
+        </Pressable>
       </View>
     </ScrollView>
   );
@@ -67,7 +65,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     maxWidth: 960,
     marginHorizontal: "auto",
-    backgroundColor: "red",
     padding: 5,
     paddingTop: 5,
     paddingBottom: 10,
@@ -76,7 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "yellow",
     paddingBottom: 210,
     position: "relative",
   },
@@ -94,7 +90,6 @@ const styles = StyleSheet.create({
 
   section: {
     flex: 1,
-    backgroundColor: "green",
     borderColor: "#000",
     borderWidth: 4,
     borderRadius: 30,
@@ -106,7 +101,6 @@ const styles = StyleSheet.create({
   },
   flooter: {
     flex: 1,
-    backgroundColor: "orange",
     alignItems: "center",
     padding: 50,
     marginBottom: 20,
@@ -114,7 +108,7 @@ const styles = StyleSheet.create({
   cotainTitle: {
     position: "absolute",
     width: "80%",
-    backgroundColor: "pink",
+    backgroundColor: "#889EEE",
     top: 40,
     height: 75,
     borderBottomRightRadius: 50,
@@ -125,10 +119,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#000",
+    color: "#fff",
     textAlign: "center",
     justifyContent: "center",
 
+
+  },
+
+  titleButton: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#fff",
   },
   titleCal: {
     fontSize: 20,
@@ -176,5 +177,7 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 24,
     borderRadius: 30,
+    marginBottom: 10,
+    padding: 30,
   },
 });

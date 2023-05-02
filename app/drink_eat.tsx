@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
+
     sizetext: {
       fontSize: 24,
       fontWeight: "bold",
