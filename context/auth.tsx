@@ -25,8 +25,6 @@ function useProtectedRoute(user) {
 
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
-    //router.replace("/flagNutrition");
-    //return
 
     if (
       // If the user is not signed in and the initial segment is not anything in the auth group.
@@ -43,7 +41,7 @@ function useProtectedRoute(user) {
 }
 
 function AuthProvider(props) {
-  const [user, setAuth] = React.useState({});
+  const [user, setAuth] = React.useState(null);
 
   useProtectedRoute(user);
 
