@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, ScrollView, StatusBar } from "react-native"
 import DailyActivityBox from "../../components/dailyActivityBox"
+import React from "react"
 
 
 export default function DailyActivity() {
