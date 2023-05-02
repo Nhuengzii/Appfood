@@ -17,13 +17,13 @@ export default function WelcomeUser() {
       setUsername(data.username)
     }
   }, [data])
+
   return (
     <View style={styles.container}>
 
       <View style={styles.leftContainer}>
         <Text>picture</Text>
       </View>
-
       <View style={styles.rightContainer}>
         <View style={{ flex: 1 }}>
           <Text style={styles.welcomeText}>ยินดีต้อนรับ</Text>
