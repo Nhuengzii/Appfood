@@ -1,14 +1,17 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import ButtonBack from "../components/ButtonBack";
+import React from "react";
 
 
-export default function VegFruit() {
+export default function Oil() {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <View style={styles.containButton}>
-        <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+      <View style={styles.sectionHeader}>
+        <View style={styles.containButton}>
+          <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+        </View>
       </View>
       <View style={styles.mainContain}>
         <View style={styles.containTitleOil}>
@@ -36,15 +39,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFBF3",
     flexDirection: "column",
   },
-  header: {
-    flex: 1,
-    backgroundColor: "yellow",
+  sectionHeader: {
+    flex: 2/3,
+    //backgroundColor: "yellow",
   },
   containButton: {
-    top: "7%",
+    top: "50%",
     left: "7%",
     width: "12.5%",
-    backgroundColor: "red",
   },
   mainContain: {
     width: "100%",
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FDE9C0",
     alignItems: "center",
     justifyContent: "center",
-    top: "8%",
+    top: "5%",
     borderRadius: 20,
   },
   containDetailOil: {
