@@ -52,7 +52,7 @@ export default function SmartCamera() {
         <Image source={{ uri: "data:image/jpg;base64," + photo.base64 }} style={{ alignSelf: "stretch", flex: 1, maxHeight: 512 }} />
         <Text style={{ fontSize: 30, fontWeight: "bold" }} > อยากกินหรอ </Text>
         <View style={{ flexDirection: "row" }} >
-          <Button title="ใช่" onPress={() => { Alert.alert("ยินดีด้วยนะ") }} />
+          <Button title="ใช่" onPress={() =>  router.push("/eatYes")} />
           <Button title="ไม่" onPress={() => { setPhoto(null) }} />
         </View>
       </ View>
