@@ -12,7 +12,7 @@ export default function MeatMilk() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.header}>
           <View style={styles.containButton}>
-            <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+            <ButtonBack colorBg={"#8297DF"} colorStyle={"white"}></ButtonBack>
           </View>
         </View>
         <View style={styles.mainContain}>

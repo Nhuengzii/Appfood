@@ -8,7 +8,8 @@ import React from 'react';
 
 export default function ButtonBack({ colorBg, colorStyle }) {
     const router = useRouter();
-    return (
+    if (colorStyle === "black" ){
+        return (
             <Pressable onPress={() => router.back()} style={{
                 width: 50,
                 height: 50,
@@ -19,5 +20,20 @@ export default function ButtonBack({ colorBg, colorStyle }) {
             }}>
                 <AntDesign name="left" size={24} color="black" />
             </Pressable>
-    );
+        );
+    } else if (colorStyle == "white") {
+        return (
+            <Pressable onPress={() => router.back()} style={{
+                width: 50,
+                height: 50,
+                backgroundColor: colorBg,
+                alignItems: "center",
+                justifyContent: "center",
+                borderRadius: 80,
+            }}>
+                <AntDesign name="left" size={24} color="white" />
+            </Pressable>
+        );
+    }
+    
 }

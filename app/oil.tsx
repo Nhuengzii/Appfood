@@ -10,7 +10,7 @@ export default function Oil() {
     <View style={styles.container}>
       <View style={styles.sectionHeader}>
         <View style={styles.containButton}>
-          <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+          <ButtonBack colorBg={"#8297DF"} colorStyle={"white"}></ButtonBack>
         </View>
       </View>
       <View style={styles.mainContain}>
