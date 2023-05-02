@@ -13,7 +13,7 @@ export default function FlagNutrition() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
         <View style={styles.navSection}>
             <View style={styles.containButton}>
-              <ButtonBack colorBg={"#C9DDDC"} colorStyle={undefined}></ButtonBack>
+              <ButtonBack colorBg={"#C9DDDC"} colorStyle={"black"}></ButtonBack>
             </View>
             <View style={styles.containMenu}>
               <Text style={styles.titleMenu}>เมนู</Text>
