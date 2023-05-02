@@ -4,12 +4,19 @@ import {
   Text,
 } from "react-native"
 
+import { useState, useEffect } from "react"
 import { GetUsers } from "../firebaseServices/database/getUser";
 import { useAuth } from "../context/auth"
 
 export default function WelcomeUser() {
   const { user } = useAuth()
   const data = GetUsers("users", user.uid);
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    if (data != null) {
+      setUsername(data.username)
+    }
+  }, [data])
   return (
     <View style={styles.container}>
 
@@ -22,7 +29,7 @@ export default function WelcomeUser() {
           <Text style={styles.welcomeText}>ยินดีต้อนรับ</Text>
         </View>
         <View style={{ flex: 1, marginTop: 10 }}>
-          <Text style={styles.userNameText}>"{data.firstName}"</Text>
+          <Text style={styles.userNameText}>"{username}"</Text>
         </View>
         <View style={styles.personalInfoWrapper}>
           <Text style={styles.personalInfoText}>ข้อมูลส่วนตัว</Text>

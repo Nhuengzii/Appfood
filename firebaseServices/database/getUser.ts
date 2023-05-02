@@ -3,7 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { useState } from "react";
 
-export const GetUsers = (collection, docRef) => {
+export const GetUsers = (collection: string, docRef: string) => {
   const [data, setData] = useState(null);
 
   const docSnap = getDoc(doc(db, collection, docRef));
