@@ -16,7 +16,7 @@ export default function FindMenu() {
 
         <View style={styles.containSearchBox}>
           <Text style={styles.textSearchBox}>พิมพ์ชื่ออาหารตรงนี้สิ</Text>
-          <FontAwesome style={styles.iconSearch}  name="search" size={24} color="black" />
+          <FontAwesome style={styles.iconSearch}  name="search" size={24} color="rgba(0, 0, 0, .51)" />
         </View>
 
       </View>
@@ -49,7 +49,7 @@ export default function FindMenu() {
 
       <View style={styles.sectionFooter}>
         <View style={styles.containIconCamera}>
-          <AntDesign style={styles.iconCamera} name="camera" size={64} color="rgba(0, 0, 0, .51)" onPress={() => router.push("/camera")}/>
+          <AntDesign style={styles.iconCamera} name="camera" size={64} color="white" onPress={() => router.push("/camera")}/>
         </View>
       </View>
       
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     alignItems: 'center',
     justifyContent: 'center',
-    left: "-15%",
+    left: "-12%",
     top: "10%",
   },
   textButtonMenu: {
