@@ -35,6 +35,8 @@ function useProtectedRoute(user: UserLoginData) {
 
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
+    //router.replace("/VegTypeA");
+    //return
 
     if (
       // If the user is not signed in and the initial segment is not anything in the auth group.
@@ -51,7 +53,7 @@ function useProtectedRoute(user: UserLoginData) {
 }
 
 function AuthProvider(props) {
-  const [user, setAuth] = React.useState(null);
+  const [user, setAuth] = React.useState({});
 
   useProtectedRoute(user);
 

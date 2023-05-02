@@ -1,4 +1,4 @@
-import { Text, Button, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import ButtonBack from "../components/ButtonBack";
@@ -36,7 +36,7 @@ export default function VegFruit() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View style={styles.containButton}>
-            <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
+            <ButtonBack colorBg={"#8297DF"} colorStyle={"white"}></ButtonBack>
           </View>
           <View style={styles.containTitle}>
             <Text style={styles.title}>ผักและผลไม้</Text>
