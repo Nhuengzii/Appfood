@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 import { useAuth } from "../context/auth";
 import { useRouter } from "expo-router";
+import React from "react";
 
 export default function Index() {
   const { naiveSignOut, user } = useAuth();
