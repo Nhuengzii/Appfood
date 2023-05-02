@@ -2,6 +2,7 @@ import { ScrollView, StatusBar, View, LogBox } from "react-native";
 import { useEffect } from "react"
 import WelcomeUser from "../../components/WelcomeUser"
 import InsertPersonalInfo from "../../components/InsertPersonalInfo"
+import React from "react";
 
 export default function Personal() {
   useEffect(() => {
