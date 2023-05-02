@@ -2,6 +2,7 @@ import { Text, Button, View, StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import ButtonBack from "../components/ButtonBack";
+import React from "react";
 //import ButtonVeg from "../components/ButtonVeg";
 
 
@@ -32,7 +33,7 @@ export default function VegFruit() {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }} stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <View style={styles.containButton}>
             <ButtonBack colorBg={"#8297DF"} colorStyle={undefined}></ButtonBack>
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
   header: {
     width: "100%",
     height: "12%",
-    //backgroundColor: "yellow",
+    backgroundColor: "#F7FCF1",
     position: "relative",
   },
   containTitle: {
