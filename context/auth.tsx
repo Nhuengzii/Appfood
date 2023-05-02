@@ -4,6 +4,7 @@ import { auth } from "../firebaseServices/firebaseConfig";
 import React, { Context, createContext, useContext } from "react";
 import { SetUsers } from "../firebaseServices/database/setUser";
 
+
 type AuthenticationContextType = {
   naiveSignIn: () => void;
   naiveSignOut: () => void;
@@ -24,6 +25,8 @@ function useProtectedRoute(user) {
 
   React.useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
+    //router.replace("/flagNutrition");
+    //return
 
     if (
       // If the user is not signed in and the initial segment is not anything in the auth group.
@@ -40,7 +43,7 @@ function useProtectedRoute(user) {
 }
 
 function AuthProvider(props) {
-  const [user, setAuth] = React.useState(null);
+  const [user, setAuth] = React.useState({});
 
   useProtectedRoute(user);
 
