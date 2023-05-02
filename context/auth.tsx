@@ -53,7 +53,7 @@ function useProtectedRoute(user: UserLoginData) {
 }
 
 function AuthProvider(props) {
-  const [user, setAuth] = React.useState({});
+  const [user, setAuth] = React.useState(null);
 
   useProtectedRoute(user);
 
