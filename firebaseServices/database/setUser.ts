@@ -14,10 +14,6 @@ export const SetUsers = (collection: string, docRef: string, docData) => {
 export const SetUsersPersonal = (collection: string, docRef: string, docData) => {
   //TODO: if not exist use setDoc
   updateDoc(doc(db, collection, docRef), {
-    username: docData.userName,
-    email: docData.email,
-    phone: docData.phone,
-    dataFilled: docData.dataFilled,
     firstName: docData.firstName,
     lastName: docData.lastName,
     gender: docData.gender,
