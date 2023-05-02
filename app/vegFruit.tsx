@@ -1,4 +1,4 @@
-import { Text, Button, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import ButtonBack from "../components/ButtonBack";
