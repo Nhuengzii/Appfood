@@ -9,7 +9,7 @@ export default function RiceFlour() {
     <View style={styles.container}>
       <View style={styles.sectionHeader}>
         <View style={styles.containButton}>
-          <ButtonBack colorBg={"#8297DF"} colorStyle={undefined} />
+          <ButtonBack colorBg={"#8297DF"} colorStyle={"white"} />
         </View>
         <View style={styles.containTitle}>
           <Text style={styles.titleHeader}>ข้าว-แป้ง</Text>
