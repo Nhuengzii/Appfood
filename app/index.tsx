@@ -1,12 +1,16 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import { useAuth } from "../context/auth";
+import { useAuth, getCredentialData } from "../context/auth";
 import { useRouter } from "expo-router";
 import React from "react";
 
 export default function Index() {
-  const { naiveSignOut, user } = useAuth();
+  const { naiveSignOut, user, signInWithEmailAndPassword } = useAuth();
   const router = useRouter()
   if (user === null) {
+    getCredentialData().then((cre) => {
+      const { email, password } = cre;
+      signInWithEmailAndPassword(email, password)
+    })
     return
   }
   return (
@@ -21,4 +25,4 @@ export default function Index() {
       <Button title="dailyActivity" onPress={() => router.push("/information/dailyActivity")} />
     </View>
   );
-}
+} 
