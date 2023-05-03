@@ -16,11 +16,11 @@ import Dropdown from "../../components/dropdown";
 import { useAuth } from "../../context/auth"
 import { GetUsers } from "../../firebaseServices/database/getUser";
 import { AntDesign } from '@expo/vector-icons'; 
-import { Entypo } from '@expo/vector-icons'; 
 
 
 export default function Activity() {
   const {user} = useAuth()
+  
   const data = GetUsers("users", user.credential.uid);
   const [username, setUsername] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -45,6 +45,7 @@ export default function Activity() {
     }
   }, [data])
 
+
   const Onclick = () => {
     setModalVisible(!modalVisible)
   };
@@ -52,6 +53,7 @@ export default function Activity() {
   const Onclick_Next = () => {
     alert("หน้าถัดไป");
   };
+
 
   const AddAct_db = () => {
     if(number==""||number==null)
@@ -80,6 +82,7 @@ export default function Activity() {
     { cancelable: false }
   );
     console.log(activity_Data1);
+
     //get ข้อมูลจาก db มาใส่ใน activity_Data1,2,3
     setModalVisible(!modalVisible)
   };
@@ -130,7 +133,9 @@ export default function Activity() {
 
         <View style={{ flexDirection: "row",marginTop:20 ,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>1. กิจกกรมระดับเบามาก</Text>
+
           <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
+
         </View>
 
 
@@ -143,6 +148,7 @@ export default function Activity() {
         <View style={{ flexDirection: "row" ,marginTop:20,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>2. กิจกกรมระดับเบา</Text>
           <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
+
         </View>
 
       
@@ -157,7 +163,9 @@ export default function Activity() {
  
         <View style={{ flexDirection: "row", marginTop:20,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>3. กิจกกรมระดับปานกลาง</Text>
+
           <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
+
         </View>
 
         <Dropdown label={"----------"} data={activity_Data3} onSelect={(selected) => { setActivity3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
