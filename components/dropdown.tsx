@@ -7,7 +7,7 @@ import {
   FlatList,
   Image,
 } from "react-native"
-
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function Dropdown({ label, data, onSelect, backgroundColor, width }) {
 
@@ -75,7 +75,7 @@ export default function Dropdown({ label, data, onSelect, backgroundColor, width
 
       <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
         <Text style={{fontSize:18}}>{select}</Text>
-        <Image style={{width:12,height:13}} source={require("../assets/images/Dropdoen/Drop-icon.png")}/>
+        <AntDesign name="caretdown" size={18} color="black" />
       </TouchableOpacity>
       {renderDropdown()}
     </View>
