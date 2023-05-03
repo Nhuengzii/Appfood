@@ -13,7 +13,6 @@ async function storeCredentialData(email, password) {
   try {
     await AsyncStorage.setItem('@myemail', email);
     await AsyncStorage.setItem('@mypassword', password);
-    console.log("Store password succes")
   } catch (e) {
     console.log(e)
   }
@@ -23,10 +22,18 @@ async function getCredentialData() {
   try {
     const email = await AsyncStorage.getItem('@myemail')
     const password = await AsyncStorage.getItem('@mypassword')
-    console.log(email, password, "GEEEEET")
     return { email: email, password: password }
   } catch (e) {
     console.log(e)
+  }
+}
+
+async function removeCredentialData() {
+  try {
+    await AsyncStorage.removeItem('@myemail', () => { console.log("Remove email Succes") })
+    await AsyncStorage.removeItem('@mypassword', () => { console.log("Remove password Succes") })
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -69,9 +76,13 @@ function useProtectedRoute(user: UserLoginData) {
     ) {
       // Redirect to the sign-in page.
       router.replace("/sign-in");
-    } else if (user && inAuthGroup) {
+    } else if (user && inAuthGroup && (!user.dataFilled)) {
+      // Redirect away from the sign-in page. to tobefill
+      router.replace("/information/tobefill");
+    }
+    else if (user && inAuthGroup && (user.dataFilled)) {
       // Redirect away from the sign-in page.
-      router.replace("/");
+      router.replace("/")
     }
   }, [user, segments]);
 }
@@ -85,7 +96,10 @@ function AuthProvider(props) {
     <AuthContext.Provider
       value={{
         naiveSignIn: () => setAuth({}),
-        naiveSignOut: () => setAuth(null),
+        naiveSignOut: () => {
+          setAuth(null)
+          removeCredentialData()
+        },
         signInWithEmailAndPassword: (email, password) => {
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
