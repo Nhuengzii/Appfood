@@ -1,4 +1,3 @@
-
 import {
   View,
   Text,
@@ -6,31 +5,58 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
   Alert,
   Modal,
 } from "react-native";
 import React from "react";
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 import Dropdown from "../../components/dropdown";
-import { useAuth } from "../../context/auth"
+import { useAuth } from "../../context/auth";
 import { GetUsers } from "../../firebaseServices/database/getUser";
-import { AntDesign, Entypo } from '@expo/vector-icons';
-
+import { AntDesign, Entypo } from "@expo/vector-icons";
 
 export default function Activity() {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   const data = GetUsers("users", user.credential.uid);
   const [username, setUsername] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [number, onChangeNumber] = React.useState('');
+  const [number, onChangeNumber] = React.useState("");
 
-  const activity_Data1 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
-  const activity_Data2 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
-  const activity_Data3 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
-  const countData = ['1', '2', '3', '4', '5', '6', '7'];
-
+  const activity_Data1 = [
+    "--",
+    "กิจกรรมแบบที่1",
+    "กิจกรรมแบบที่2",
+    "กิจกรรมแบบที่3",
+    "กิจกรรมแบบที่4",
+    "กิจกรรมแบบที่5",
+    "กิจกรรมแบบที่6",
+    "กิจกรรมแบบที่7",
+    "กิจกรรมแบบที่8",
+  ];
+  const activity_Data2 = [
+    "--",
+    "กิจกรรมแบบที่1",
+    "กิจกรรมแบบที่2",
+    "กิจกรรมแบบที่3",
+    "กิจกรรมแบบที่4",
+    "กิจกรรมแบบที่5",
+    "กิจกรรมแบบที่6",
+    "กิจกรรมแบบที่7",
+    "กิจกรรมแบบที่8",
+  ];
+  const activity_Data3 = [
+    "--",
+    "กิจกรรมแบบที่1",
+    "กิจกรรมแบบที่2",
+    "กิจกรรมแบบที่3",
+    "กิจกรรมแบบที่4",
+    "กิจกรรมแบบที่5",
+    "กิจกรรมแบบที่6",
+    "กิจกรรมแบบที่7",
+    "กิจกรรมแบบที่8",
+  ];
+  const countData = ["1", "2", "3", "4", "5", "6", "7"];
 
   const [value_Activity1, setActivity1] = useState("");
   const [value_Activity2, setActivity2] = useState("");
@@ -41,19 +67,17 @@ export default function Activity() {
 
   useEffect(() => {
     if (data != null) {
-      setUsername(data.username)
+      setUsername(data.username);
     }
-  }, [data])
-
+  }, [data]);
 
   const Onclick = () => {
-    setModalVisible(!modalVisible)
+    setModalVisible(!modalVisible);
   };
 
   const Onclick_Next = () => {
     alert("หน้าถัดไป");
   };
-
 
   const AddAct_db = () => {
     if (number == "" || number == null) {
@@ -73,50 +97,51 @@ export default function Activity() {
     activity_Data2.push(number);
     activity_Data3.push(number);
     //ส่งขึ้น db ด้วย
-    Alert.alert('สำเร็จ',
-      'กิจกรรมถูกบันทึกเรียบร้อย',
-      [
-        { text: 'ตกลง', onPress: () => console.log('Ok Pressed') },
-      ],
+    Alert.alert(
+      "สำเร็จ",
+      "กิจกรรมถูกบันทึกเรียบร้อย",
+      [{ text: "ตกลง", onPress: () => console.log("Ok Pressed") }],
       { cancelable: false }
     );
     console.log(activity_Data1);
 
     //get ข้อมูลจาก db มาใส่ใน activity_Data1,2,3
-    setModalVisible(!modalVisible)
+    setModalVisible(!modalVisible);
   };
 
-
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#ffffff" }}>
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
-        }}>
+        }}
+      >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>ชื่อกิจกรรม</Text>
             <TextInput
-              style={[styles.modalinput, { backgroundColor: '#FFD7D7' }]}
+              style={[styles.modalinput, { backgroundColor: "#FFD7D7" }]}
               onChangeText={onChangeNumber}
-              value={number} />
+              value={number}
+            />
             <TouchableOpacity
-              style={[styles.buttonaddinmodal, { backgroundColor: '#ED7E7E', }]}
-              onPress={() => AddAct_db()}>
+              style={[styles.buttonaddinmodal, { backgroundColor: "#ED7E7E" }]}
+              onPress={() => AddAct_db()}
+            >
               <Text style={{ fontSize: 17, color: "white" }}>เพิ่ม</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.buttonaddinmodal, { backgroundColor: '#f0f0f0', }]}
-              onPress={Onclick}>
+              style={[styles.buttonaddinmodal, { backgroundColor: "#f0f0f0" }]}
+              onPress={Onclick}
+            >
               <Text style={{ fontSize: 17 }}>ยกเลิก</Text>
             </TouchableOpacity>
           </View>
         </View>
       </Modal>
-
 
       <View style={styles.container}>
         <View style={styles.headerContainer}>
@@ -128,56 +153,149 @@ export default function Activity() {
           </View>
         </View>
 
-        <View style={{ width: "88%", flexDirection: "column", alignItems: "flex-start", }}>
-
-          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+        <View
+          style={{
+            width: "88%",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 20,
+              marginLeft: 5,
+              marginBottom: 15,
+            }}
+          >
             <Text style={{ fontSize: 20 }}>1. กิจกกรมระดับเบามาก</Text>
 
-            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
-
+            <AntDesign
+              name="questioncircleo"
+              size={20}
+              color="black"
+              style={{ marginTop: 5, marginLeft: 5 }}
+            />
           </View>
 
-
-          <Dropdown label={"----------"} data={activity_Data1} onSelect={(selected) => { setActivity1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <Dropdown
+            label={"----------"}
+            data={activity_Data1}
+            onSelect={(selected) => {
+              setActivity1(selected);
+            }}
+            backgroundColor={"#FFD7D7"}
+            width={"100%"}
+          />
           <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
             <View style={{ flexDirection: "row" }}>
-              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+              <View style={{ width: "23%" }}>
+                <Dropdown
+                  label={" "}
+                  data={countData}
+                  onSelect={(selected) => {
+                    setCount1(selected);
+                  }}
+                  backgroundColor={"#FFD7D7"}
+                  width={"100%"}
+                />
+              </View>
+              <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>
+                ครั้ง/สัปดาห์
+              </Text>
             </View>
           </View>
-          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 20,
+              marginLeft: 5,
+              marginBottom: 15,
+            }}
+          >
             <Text style={{ fontSize: 20 }}>2. กิจกกรมระดับเบา</Text>
-            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
-
+            <AntDesign
+              name="questioncircleo"
+              size={20}
+              color="black"
+              style={{ marginTop: 5, marginLeft: 5 }}
+            />
           </View>
 
-
-          <Dropdown label={"----------"} data={activity_Data2} onSelect={(selected) => { setActivity2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <Dropdown
+            label={"----------"}
+            data={activity_Data2}
+            onSelect={(selected) => {
+              setActivity2(selected);
+            }}
+            backgroundColor={"#FFD7D7"}
+            width={"100%"}
+          />
           <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
             <View style={{ flexDirection: "row" }}>
-              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+              <View style={{ width: "23%" }}>
+                <Dropdown
+                  label={" "}
+                  data={countData}
+                  onSelect={(selected) => {
+                    setCount2(selected);
+                  }}
+                  backgroundColor={"#FFD7D7"}
+                  width={"100%"}
+                />
+              </View>
+              <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>
+                ครั้ง/สัปดาห์
+              </Text>
             </View>
           </View>
 
-
-
-          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 20,
+              marginLeft: 5,
+              marginBottom: 15,
+            }}
+          >
             <Text style={{ fontSize: 20 }}>3. กิจกกรมระดับปานกลาง</Text>
 
-            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
-
+            <AntDesign
+              name="questioncircleo"
+              size={20}
+              color="black"
+              style={{ marginTop: 5, marginLeft: 5 }}
+            />
           </View>
 
-          <Dropdown label={"----------"} data={activity_Data3} onSelect={(selected) => { setActivity3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <Dropdown
+            label={"----------"}
+            data={activity_Data3}
+            onSelect={(selected) => {
+              setActivity3(selected);
+            }}
+            backgroundColor={"#FFD7D7"}
+            width={"100%"}
+          />
           <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
             <View style={{ flexDirection: "row" }}>
-              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+              <View style={{ width: "23%" }}>
+                <Dropdown
+                  label={" "}
+                  data={countData}
+                  onSelect={(selected) => {
+                    setCount3(selected);
+                  }}
+                  backgroundColor={"#FFD7D7"}
+                  width={"100%"}
+                />
+              </View>
+              <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>
+                ครั้ง/สัปดาห์
+              </Text>
             </View>
           </View>
-
         </View>
-
-
-
 
         <View style={{ flexDirection: "row", marginTop: 30 }}>
           <TouchableOpacity onPress={Onclick} style={styles.roundButton1}>
@@ -211,7 +329,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 50,
     marginBottom: 10,
-
   },
   headerWrapper: {
     backgroundColor: "#1E807A",
@@ -302,17 +419,17 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 22,
   },
   modalView: {
     margin: 20,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -323,9 +440,9 @@ const styles = StyleSheet.create({
   },
   modalText: {
     marginBottom: 15,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   modalinput: {
     height: 40,
@@ -340,9 +457,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     height: 30,
     width: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     margin: 10,
   },
 });
-

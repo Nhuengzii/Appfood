@@ -10,6 +10,7 @@ import {
   StatusBar,
   TouchableHighlight,
 } from "react-native";
+import { Ionicons } from '@expo/vector-icons'; 
 
 export default function SignIn() {
   const { naiveSignIn, signInWithEmailAndPassword } = useAuth();
@@ -31,9 +32,9 @@ export default function SignIn() {
             },
           ]}
         >
-          <Text style={[styles.Buttonback]}>
-            {"<"}
-          </Text>
+        <TouchableHighlight style={[styles.Buttonback]}>
+          <Ionicons name="md-chevron-back" size={30} color="#ffffff" />
+        </TouchableHighlight>
         </View>
       </View>
 
@@ -108,11 +109,9 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 50,
-    padding: 3,
-    fontSize: 30,
-    textAlign: "center",
-    color: "white",
-  },
+    alignItems: "center",
+    justifyContent: "center",
+    },
   styles1: {
     backgroundColor: "#FEF6AE",
     borderRadius: 30,
@@ -147,17 +146,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {
-    borderRadius: 20,
     padding: 10,
     elevation: 2,
+    borderTopLeftRadius: 35,
+    borderBottomRightRadius: 35,
   },
   signIn: {
     textAlign: "center",
     color: "white",
     width: 229,
+    height: 54,
     backgroundColor: "#FF783F",
     fontSize: 24,
-    marginVertical: 20,
+    marginVertical: 15,
   },
   forget: {
     fontSize: 18,
