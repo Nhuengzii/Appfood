@@ -127,7 +127,14 @@ function AuthProvider(props) {
             .then((userCredential) => {
               // Signed in
               const user = userCredential.user;
-              setAuth(user);
+              const userLoginData: UserLoginData = {
+                credential: user,
+                username: userName,
+                email: email,
+                phone: phone,
+                dataFilled: dataFilled
+              }
+              setAuth(userLoginData);
               SetUsers("users", user.uid, {
                 username: userName,
                 email: email,

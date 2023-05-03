@@ -1,12 +1,15 @@
-import { StyleSheet, View, Text, FlatList, StatusBar, Icon } from "react-native";
+import { StyleSheet, View, Text, FlatList, StatusBar } from "react-native";
+import { Checkbox } from "expo-checkbox"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
 import SummaryActivityBox from "../../components/summaryActivityBox";
-import { Octicons, FontAwesome } from "@expo/vector-icons"
+import SmileIcon from "../../components/SmileIcon";
 
 //TODO:zindex
 const data = [{ id: "1", name: "activity1" }, { id: "2", name: "activity2" }]
 export default function ActivitySummary() {
+
+  const [isSelected, setIsSelected] = useState(false);
   return (
     <View style={styles.container}>
       <StatusBar hidden={true} />
@@ -45,9 +48,7 @@ export default function ActivitySummary() {
             colors={['#FF3434', '#EEF07C', '#8FFBAD']}
             style={styles.gradient}
           >
-            <FontAwesome name="circle" size={30} color="#FFD703">
-              <Octicons name="smiley" size={24} color="black" />
-            </FontAwesome>
+            <SmileIcon colorIn={"#FFFFFF"} colorOut={"#FFD703"} sizeIn={20} sizeOut={25} />
           </LinearGradient>
         </View>
       </View>
@@ -57,12 +58,19 @@ export default function ActivitySummary() {
         <Text style={styles.bottomResultIntroText}>กิจกรรมของ"คุณแจ่มใส"</Text>
         <Text style={styles.bottomResultIntroText}>อยู่ในระดับ</Text>
         <View style={styles.levelResultWrapper}>
-          <Text> กิจกรรมระดับปานกลาง</Text>
+          <Text style={styles.levelResultText} > กิจกรรมปานกลาง</Text>
         </View>
-        <View>
-
+        <View style={styles.checkBoxWithText}>
+          <Checkbox
+            value={isSelected}
+            onValueChange={setIsSelected}
+            style={{ backgroundColor: "#C6FF9A", margin: 5 }}
+          />
+          <Text style={styles.checkBoxText}>ต้องการให้ระบบบันทึกกิจกรรมสำหรับวันถัดไป</Text>
         </View>
+        <Text style={styles.checkBoxText}>เพื่อคำนวณค่าพลังงานความต้องการเบื้องต้นหรือไม่</Text>
       </View>
+
     </View>
   )
 }
@@ -122,20 +130,30 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   bottomResultIntroText: {
-    fontSize: 15,
+    fontSize: 20,
     margin: 5
   },
   levelResultWrapper: {
     backgroundColor: "#F9FFB5",
     paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     borderRadius: 20,
     margin: 20,
+  },
+  levelResultText: {
+    fontSize: 20
   },
   gradient: {
     flex: 1,
     borderRadius: 20,
     justifyContent: "center"
-  }
+  },
+  checkBoxWithText: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  checkBoxText: {
+    fontSize: 14
+  },
 
 })
