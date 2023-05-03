@@ -4,9 +4,10 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Image,
 } from "react-native"
-
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function Dropdown({ label, data, onSelect, backgroundColor, width }) {
 
@@ -56,7 +57,7 @@ export default function Dropdown({ label, data, onSelect, backgroundColor, width
                 onSelect(item);
                 setVisible(false);
               }}>
-                <Text>{item}</Text>
+                <Text style={{fontSize:18}}>{item}</Text>
               </TouchableOpacity>
             )}
             contentContainerStyle={{ rowGap: 3 }}
@@ -73,8 +74,8 @@ export default function Dropdown({ label, data, onSelect, backgroundColor, width
     <View style={{ width: width }}>
 
       <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
-        <Text>{select}</Text>
-        <Text>icon</Text>
+        <Text style={{fontSize:18}}>{select}</Text>
+        <AntDesign name="caretdown" size={18} color="black" />
       </TouchableOpacity>
       {renderDropdown()}
     </View>

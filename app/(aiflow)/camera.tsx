@@ -1,18 +1,34 @@
-import { Camera, CameraType, FlashMode } from "expo-camera";
-import { useRef, useState } from "react";
+import { Camera, CameraPictureOptions, CameraType, FlashMode } from "expo-camera";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "expo-router";
 import { Entypo } from "@expo/vector-icons"
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image, Alert } from "react-native";
 import React from "react";
-import { async } from "@firebase/util";
+import * as tfjs from "@tensorflow/tfjs"
+import { fetch, decodeJpeg } from "@tensorflow/tfjs-react-native";
+
+async function convertToTensor(uri: string) {
+  const response = await fetch(uri, {}, { isBinary: true });
+  console.log("R deady")
+  const imageDataArrayBuffer = await response.arrayBuffer();
+  const imageData = new Uint8Array(imageDataArrayBuffer);
+  const imageTensor = decodeJpeg(imageData);
+  console.log("Convert Succes!")
+  console.log(imageTensor.shape)
+}
 
 export default function SmartCamera() {
   const [type, setType] = useState(CameraType.back);
   const [permissin, requestPermission] = Camera.useCameraPermissions();
   const [flashMode, setFlashMode] = useState(FlashMode.off);
   const [photo, setPhoto] = useState(null);
-  const camRef = useRef()
+  const camRef = useRef<Camera>()
   const router = useRouter()
+  useEffect(() => {
+    (async () => {
+      await tfjs.ready()
+    })();
+  }, [])
   if (!permissin) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -38,7 +54,7 @@ export default function SmartCamera() {
   }
 
   async function takepic() {
-    const options = {
+    const options: CameraPictureOptions = {
       quality: 1,
       base64: true,
       exif: false
@@ -52,7 +68,12 @@ export default function SmartCamera() {
         <Image source={{ uri: "data:image/jpg;base64," + photo.base64 }} style={{ alignSelf: "stretch", flex: 1, maxHeight: 512 }} />
         <Text style={{ fontSize: 30, fontWeight: "bold" }} > อยากกินหรอ </Text>
         <View style={{ flexDirection: "row" }} >
-          <Button title="ใช่" onPress={() =>  router.push("/eatYes")} />
+          <Button title="ใช่" onPress={async () => {
+            const start = Date.now();
+            await convertToTensor("data:image/jpg;base64," + photo.base64)
+            const end = Date.now();
+            Alert.alert(`Execution time in ${end - start} ms`)
+          }} />
           <Button title="ไม่" onPress={() => { setPhoto(null) }} />
         </View>
       </ View>
