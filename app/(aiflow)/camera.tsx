@@ -25,7 +25,7 @@ export default function SmartCamera() {
   const [permissin, requestPermission] = Camera.useCameraPermissions();
   const [flashMode, setFlashMode] = useState(FlashMode.off);
   const [photo, setPhoto] = useState(null);
-  const camRef = useRef<Camera>()
+  let camRef = useRef<Camera>()
   const router = useRouter()
   function handleCameraStream(images) {
     const loop = async () => {
@@ -69,6 +69,7 @@ export default function SmartCamera() {
       base64: true,
       exif: false
     }
+    console.log(Object.keys(camRef.current))
     const newPhoto = await camRef.current.takePictureAsync(options);
     setPhoto(newPhoto);
   }
@@ -93,13 +94,15 @@ export default function SmartCamera() {
     return (
       <View style={{ flex: 1, backgroundColor: "black", justifyContent: "space-evenly" }}>
         <View style={{ flexDirection: "row", marginTop: 35, flex: 0, justifyContent: "space-between" }}>
-          <Text style={{ fontSize: 40, fontWeight: "bold", color: "white" }} onPress={() => { router.back() }}>Exit</Text>
+          <Text style={{ fontSize: 40, fontWeight: "bold", color: "white" }} onPress={() => { router.back() }}>ออก</Text>
           <Entypo name="flash" size={40} color="white" onPress={() => toggleFlash()} />
         </View>
         <View style={styles.container}>
           <TensorCamera
             type={CameraType.back}
+            ref={camRef}
             style={{ zIndex: 1, flex: 1 }}
+            flashMode={flashMode}
             resizeHeight={200}
             resizeWidth={152}
             resizeDepth={3}
