@@ -20,7 +20,7 @@ export default function SmileIcon({ colorIn, colorOut, sizeIn, sizeOut }) {
                 alignItems: 'center',
                 justifyContent: 'center',
             }}>
-                <FontAwesome5 style={styles.icon} name="smile" size={50} color="black" />
+                <FontAwesome5 style={styles.icon} name="smile" size={sizeIn-1} color="black" />
             </View>
         </View>
                 
