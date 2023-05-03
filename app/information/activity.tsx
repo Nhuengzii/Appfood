@@ -17,7 +17,7 @@ import { GetUsers } from "../../firebaseServices/database/getUser";
 
 
 export default function Activity() {
-  const { user } = useAuth()
+  const {user} = useAuth()
   const data = GetUsers("users", user.credential.uid);
   const [username, setUsername] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -69,7 +69,14 @@ export default function Activity() {
     activity_Data2.push(number);
     activity_Data3.push(number);
     //ส่งขึ้น db ด้วย
-    alert("เพิ่มกิจกรรมเรียบร้อยแล้ว");
+    Alert.alert('สำเร็จ',
+    'กิจกรรมถูกบันทึกเรียบร้อย',
+    [
+      {text: 'ตกลง', onPress: () => console.log('Ok Pressed')},
+    ],
+    { cancelable: false }
+  );
+    console.log(activity_Data1);
     //get ข้อมูลจาก db มาใส่ใน activity_Data1,2,3
     setModalVisible(!modalVisible)
   };
