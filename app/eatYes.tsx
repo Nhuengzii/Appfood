@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable, ScrollView, Image } from "react-native";
-import { useRouter } from "expo-router";
+import { Unmatched, useRouter } from "expo-router";
 import ButtonBack from "../components/ButtonBack";
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import React from "react";
@@ -16,7 +16,7 @@ export default function Oil() {
                     <ButtonBack colorBg={"#563D33"} colorStyle={"white"}></ButtonBack>
                 </View>
                 <View style={styles.headerRight}>
-                    <SmileIcon colorIn={"rgba(3, 219, 24, 0.65);"} colorOut={"white"}></SmileIcon>
+                    <SmileIcon colorIn={"rgba(3, 219, 24, 0.65);"} colorOut={"white"} sizeIn={51} sizeOut={60}></SmileIcon>
                     <View style={styles.boxIndexSugar}>
                         <Text style={styles.textIndexSugar}>ดัชนีน้ำตาล {'<'} 55</Text>
                     </View>
