@@ -24,7 +24,7 @@ export default function FindMenu() {
       <View style={styles.sectionMain}>
 
         <View style={styles.containMainFruit}>
-          <Pressable style={styles.boxInSide}>
+          <Pressable style={styles.boxInSide} onPress={() => router.push('/fruit')}>
             <View style={styles.boxTitleGreen}>
               <Text style={styles.textInBox}>ผลไม้</Text>
             </View>
@@ -35,7 +35,7 @@ export default function FindMenu() {
         </View>
 
         <View style={styles.containMainFlour}>
-          <Pressable style={styles.boxInSide}>
+          <Pressable style={styles.boxInSide} onPress={() => router.push('/flour')}>
             <View style={styles.boxTitleBrown}>
               <Text style={styles.textInBox}>ข้าว-แป้ง</Text>
             </View>
