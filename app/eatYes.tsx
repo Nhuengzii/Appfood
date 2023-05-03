@@ -16,7 +16,7 @@ export default function Oil() {
                     <ButtonBack colorBg={"#563D33"} colorStyle={"white"}></ButtonBack>
                 </View>
                 <View style={styles.headerRight}>
-                    <SmileIcon color={"rgba(3, 219, 24, 0.65);"}></SmileIcon>
+                    <SmileIcon colorIn={"rgba(3, 219, 24, 0.65);"} colorOut={"white"}></SmileIcon>
                     <View style={styles.boxIndexSugar}>
                         <Text style={styles.textIndexSugar}>ดัชนีน้ำตาล {'<'} 55</Text>
                     </View>
