@@ -5,7 +5,10 @@ import { Entypo } from "@expo/vector-icons"
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image, Alert } from "react-native";
 import React from "react";
 import * as tfjs from "@tensorflow/tfjs"
-import { fetch, decodeJpeg } from "@tensorflow/tfjs-react-native";
+import { fetch, decodeJpeg, cameraWithTensors } from "@tensorflow/tfjs-react-native";
+
+
+const TensorCamera = cameraWithTensors(Camera);
 
 async function convertToTensor(uri: string) {
   const response = await fetch(uri, {}, { isBinary: true });
@@ -24,6 +27,13 @@ export default function SmartCamera() {
   const [photo, setPhoto] = useState(null);
   const camRef = useRef<Camera>()
   const router = useRouter()
+  function handleCameraStream(images) {
+    const loop = async () => {
+      const nextImageTensor = images.next().value;
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
   useEffect(() => {
     (async () => {
       await tfjs.ready()
@@ -87,9 +97,17 @@ export default function SmartCamera() {
           <Entypo name="flash" size={40} color="white" onPress={() => toggleFlash()} />
         </View>
         <View style={styles.container}>
-          <Camera type={type} style={styles.camera} flashMode={flashMode} ref={camRef} >
-            <Image source={require("../../assets/cameraFrame.png")} resizeMode="center" style={{ flex: 1, justifyContent: "center", alignItems: "center" }} />
-          </Camera>
+          <TensorCamera
+            type={CameraType.back}
+            style={{ zIndex: 1, flex: 1 }}
+            resizeHeight={200}
+            resizeWidth={152}
+            resizeDepth={3}
+            onReady={handleCameraStream}
+            autorender={true}
+            cameraTextureWidth={512}
+            cameraTextureHeight={512} />
+
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-evenly", marginBottom: 100 }}>
           <Entypo name="camera" size={40} color="white" onPress={takepic} />
