@@ -11,16 +11,16 @@ import {
   Modal,
 } from "react-native";
 import React from "react";
-import { useState,useEffect } from "react"
+import { useState, useEffect } from "react"
 import Dropdown from "../../components/dropdown";
 import { useAuth } from "../../context/auth"
 import { GetUsers } from "../../firebaseServices/database/getUser";
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign, Entypo } from '@expo/vector-icons';
 
 
 export default function Activity() {
-  const {user} = useAuth()
-  
+  const { user } = useAuth()
+
   const data = GetUsers("users", user.credential.uid);
   const [username, setUsername] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,7 +29,7 @@ export default function Activity() {
   const activity_Data1 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
   const activity_Data2 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
   const activity_Data3 = ["--", "กิจกรรมแบบที่1", "กิจกรรมแบบที่2", "กิจกรรมแบบที่3", "กิจกรรมแบบที่4", "กิจกรรมแบบที่5", "กิจกรรมแบบที่6", "กิจกรรมแบบที่7", "กิจกรรมแบบที่8"];
-  const countData = ['1','2','3','4','5','6','7'];
+  const countData = ['1', '2', '3', '4', '5', '6', '7'];
 
 
   const [value_Activity1, setActivity1] = useState("");
@@ -56,31 +56,30 @@ export default function Activity() {
 
 
   const AddAct_db = () => {
-    if(number==""||number==null)
-    { 
+    if (number == "" || number == null) {
       alert("กรุณาใส่ชื่อกิจกรรม");
       setModalVisible(true);
       return;
     }
-    for(let i=0;i<activity_Data1.length;i++){
-      if(number==activity_Data1[i]){
+    for (let i = 0; i < activity_Data1.length; i++) {
+      if (number == activity_Data1[i]) {
         alert("มีกิจกรรมนี้แล้ว");
         return;
-    }
-    //debug
-    //console.log(activity_Data1[i]===number,activity_Data1[i],number);
+      }
+      //debug
+      //console.log(activity_Data1[i]===number,activity_Data1[i],number);
     }
     activity_Data1.push(number);
     activity_Data2.push(number);
     activity_Data3.push(number);
     //ส่งขึ้น db ด้วย
     Alert.alert('สำเร็จ',
-    'กิจกรรมถูกบันทึกเรียบร้อย',
-    [
-      {text: 'ตกลง', onPress: () => console.log('Ok Pressed')},
-    ],
-    { cancelable: false }
-  );
+      'กิจกรรมถูกบันทึกเรียบร้อย',
+      [
+        { text: 'ตกลง', onPress: () => console.log('Ok Pressed') },
+      ],
+      { cancelable: false }
+    );
     console.log(activity_Data1);
 
     //get ข้อมูลจาก db มาใส่ใน activity_Data1,2,3
@@ -90,7 +89,7 @@ export default function Activity() {
 
   return (
     <ScrollView>
-        <Modal
+      <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
@@ -100,19 +99,19 @@ export default function Activity() {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>ชื่อกิจกรรม</Text>
-            <TextInput   
-              style={[styles.modalinput,{backgroundColor: '#FFD7D7'}]}        
+            <TextInput
+              style={[styles.modalinput, { backgroundColor: '#FFD7D7' }]}
               onChangeText={onChangeNumber}
-              value={number}/>
+              value={number} />
             <TouchableOpacity
-              style={[styles.buttonaddinmodal,{backgroundColor: '#ED7E7E',}]}
+              style={[styles.buttonaddinmodal, { backgroundColor: '#ED7E7E', }]}
               onPress={() => AddAct_db()}>
-              <Text style={{fontSize:17,color:"white"}}>เพิ่ม</Text>
+              <Text style={{ fontSize: 17, color: "white" }}>เพิ่ม</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.buttonaddinmodal,{backgroundColor: '#f0f0f0',}]}
+              style={[styles.buttonaddinmodal, { backgroundColor: '#f0f0f0', }]}
               onPress={Onclick}>
-              <Text style={{fontSize:17}}>ยกเลิก</Text>
+              <Text style={{ fontSize: 17 }}>ยกเลิก</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -128,63 +127,63 @@ export default function Activity() {
             <Text style={styles.TextName}>ของคุณ "{username}"</Text>
           </View>
         </View>
-      
-      <View style={{width:"88%",flexDirection:"column",alignItems:"flex-start", }}>
 
-        <View style={{ flexDirection: "row",marginTop:20 ,marginLeft:5,marginBottom:15}}>
-          <Text style={{ fontSize: 20 }}>1. กิจกกรมระดับเบามาก</Text>
+        <View style={{ width: "88%", flexDirection: "column", alignItems: "flex-start", }}>
 
-          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
+          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+            <Text style={{ fontSize: 20 }}>1. กิจกกรมระดับเบามาก</Text>
 
-        </View>
+            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
 
-
-        <Dropdown label={"----------"} data={activity_Data1} onSelect={(selected) => { setActivity1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
-        <View style={{alignItems:"center",width:"100%",marginTop:5}}>
-          <View style={{flexDirection:"row"}}>
-            <View style={{width:"23%"}}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{fontSize:20,marginTop:10,marginLeft:8}}>ครั้ง/สัปดารห์</Text>
           </View>
-        </View>
-        <View style={{ flexDirection: "row" ,marginTop:20,marginLeft:5,marginBottom:15}}>
-          <Text style={{ fontSize: 20 }}>2. กิจกกรมระดับเบา</Text>
-          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
 
-        </View>
 
-      
-      <Dropdown label={"----------"} data={activity_Data2} onSelect={(selected) => { setActivity2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
-      <View style={{alignItems:"center",width:"100%",marginTop:5}}>
-          <View style={{flexDirection:"row"}}>
-          <View style={{width:"23%"}}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{fontSize:20,marginTop:10,marginLeft:8}}>ครั้ง/สัปดารห์</Text>
+          <Dropdown label={"----------"} data={activity_Data1} onSelect={(selected) => { setActivity1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
+            <View style={{ flexDirection: "row" }}>
+              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount1(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+            </View>
           </View>
-        </View>
-        
+          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+            <Text style={{ fontSize: 20 }}>2. กิจกกรมระดับเบา</Text>
+            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
 
- 
-        <View style={{ flexDirection: "row", marginTop:20,marginLeft:5,marginBottom:15}}>
-          <Text style={{ fontSize: 20 }}>3. กิจกกรมระดับปานกลาง</Text>
-
-          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
-
-        </View>
-
-        <Dropdown label={"----------"} data={activity_Data3} onSelect={(selected) => { setActivity3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
-        <View style={{alignItems:"center",width:"100%",marginTop:5}}>
-          <View style={{flexDirection:"row"}}>
-             <View style={{width:"23%"}}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{fontSize:20,marginTop:10,marginLeft:8}}>ครั้ง/สัปดารห์</Text>
           </View>
+
+
+          <Dropdown label={"----------"} data={activity_Data2} onSelect={(selected) => { setActivity2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
+            <View style={{ flexDirection: "row" }}>
+              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount2(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+            </View>
+          </View>
+
+
+
+          <View style={{ flexDirection: "row", marginTop: 20, marginLeft: 5, marginBottom: 15 }}>
+            <Text style={{ fontSize: 20 }}>3. กิจกกรมระดับปานกลาง</Text>
+
+            <AntDesign name="questioncircleo" size={20} color="black" style={{ marginTop: 5, marginLeft: 5 }} />
+
+          </View>
+
+          <Dropdown label={"----------"} data={activity_Data3} onSelect={(selected) => { setActivity3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
+          <View style={{ alignItems: "center", width: "100%", marginTop: 5 }}>
+            <View style={{ flexDirection: "row" }}>
+              <View style={{ width: "23%" }}><Dropdown label={" "} data={countData} onSelect={(selected) => { setCount3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} /></View><Text style={{ fontSize: 20, marginTop: 10, marginLeft: 8 }}>ครั้ง/สัปดารห์</Text>
+            </View>
+          </View>
+
         </View>
 
-      </View>
 
-      
 
-      
-        <View style={{ flexDirection: "row" ,marginTop:30}}>
+
+        <View style={{ flexDirection: "row", marginTop: 30 }}>
           <TouchableOpacity onPress={Onclick} style={styles.roundButton1}>
             <View style={styles.inroundButton1}>
               <View>
-              <Entypo name="plus" size={40} color="black" />
+                <Entypo name="plus" size={40} color="black" />
               </View>
             </View>
           </TouchableOpacity>
@@ -212,7 +211,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 50,
     marginBottom: 10,
-    
+
   },
   headerWrapper: {
     backgroundColor: "#1E807A",
