@@ -2,21 +2,21 @@ import React from 'react';
 import { Text, View, StyleSheet, Pressable, ScrollView, Image } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons'; 
 
-export default function SmileIcon({ colorIn, colorOut }) {
+export default function SmileIcon({ colorIn, colorOut, sizeIn, sizeOut }) {
     return (
         <View style={{
             backgroundColor: colorOut,
-            width: 60,
-            height: 60,
-            borderRadius: 60,
+            width: sizeOut,
+            height: sizeOut,
+            borderRadius: sizeOut,
             alignItems: 'center',
             justifyContent: 'center',
         }}>
             <View style={{
                 backgroundColor: colorIn,
-                width: 51,
-                height: 51,
-                borderRadius: 51,
+                width: sizeIn,
+                height: sizeIn,
+                borderRadius: sizeIn,
                 alignItems: 'center',
                 justifyContent: 'center',
             }}>
