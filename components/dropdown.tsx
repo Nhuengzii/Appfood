@@ -4,7 +4,8 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Image,
 } from "react-native"
 
 
@@ -56,7 +57,7 @@ export default function Dropdown({ label, data, onSelect, backgroundColor, width
                 onSelect(item);
                 setVisible(false);
               }}>
-                <Text>{item}</Text>
+                <Text style={{fontSize:18}}>{item}</Text>
               </TouchableOpacity>
             )}
             contentContainerStyle={{ rowGap: 3 }}
@@ -73,8 +74,8 @@ export default function Dropdown({ label, data, onSelect, backgroundColor, width
     <View style={{ width: width }}>
 
       <TouchableOpacity style={styles.button} onPress={toggleDropdown}>
-        <Text>{select}</Text>
-        <Text>icon</Text>
+        <Text style={{fontSize:18}}>{select}</Text>
+        <Image style={{width:12,height:13}} source={require("../assets/images/Dropdoen/Drop-icon.png")}/>
       </TouchableOpacity>
       {renderDropdown()}
     </View>
