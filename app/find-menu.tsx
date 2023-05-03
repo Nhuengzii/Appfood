@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable, Image } from "react-native";
-import { AntDesign,FontAwesome } from '@expo/vector-icons'; 
+import { AntDesign,FontAwesome,Entypo } from '@expo/vector-icons'; 
 import { useRouter } from "expo-router";
 import React from "react";
 
@@ -49,7 +49,7 @@ export default function FindMenu() {
 
       <View style={styles.sectionFooter}>
         <View style={styles.containIconCamera}>
-          <AntDesign style={styles.iconCamera} name="camera" size={64} color="white" onPress={() => router.push("/camera")}/>
+          <Entypo style={styles.iconCamera} name="camera" size={54} color="white" onPress={() => router.push("/camera")}/>
         </View>
       </View>
       
@@ -185,8 +185,8 @@ const styles = StyleSheet.create({
     //alignSelf: 'center',
     width: 100,
     height: 100,
-    top: 10,
-    left: 13,
+    top: 14,
+    left: 18,
   },
 
 });
