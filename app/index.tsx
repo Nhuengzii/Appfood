@@ -9,6 +9,10 @@ export default function Index() {
   if (user === null) {
     getCredentialData().then((cre) => {
       const { email, password } = cre;
+      if (email === null || password === null) {
+        console.log("not found credential")
+        return
+      }
       signInWithEmailAndPassword(email, password)
     })
     return
@@ -25,6 +29,6 @@ export default function Index() {
       <Button title="dailyActivity" onPress={() => router.push("/information/dailyActivity")} />
     </View>
   );
-} 
+}
 
 
