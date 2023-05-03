@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, FlatList, StatusBar } from "react-native";
+import { StyleSheet, View, Text, FlatList, StatusBar, TouchableOpacity } from "react-native";
 import { Checkbox } from "expo-checkbox"
 import { LinearGradient } from "expo-linear-gradient"
 import React, { useState } from "react"
@@ -69,9 +69,15 @@ export default function ActivitySummary() {
           <Text style={styles.checkBoxText}>ต้องการให้ระบบบันทึกกิจกรรมสำหรับวันถัดไป</Text>
         </View>
         <Text style={styles.checkBoxText}>เพื่อคำนวณค่าพลังงานความต้องการเบื้องต้นหรือไม่</Text>
+
+        <View style={styles.nextButtonWrapper}>
+          <TouchableOpacity style={styles.nextButton}>
+            <Text style={styles.nextButtonText}>บันทึก</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-    </View>
+    </View >
   )
 }
 
@@ -125,7 +131,6 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     flex: 1,
-    backgroundColor: "#F5F",
     padding: 10,
     alignItems: "center",
   },
@@ -155,5 +160,19 @@ const styles = StyleSheet.create({
   checkBoxText: {
     fontSize: 14
   },
+  nextButtonWrapper: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  nextButton: {
+    padding: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#7ECCED",
+    borderRadius: 20
+  },
+  nextButtonText: {
+    color: "#FFFFFF",
+    fontSize: 25
+  }
 
 })
