@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Button } from "react-native";
-import { useAuth, getCredentialData } from "../context/auth";
+import { useAuth, getCredentialData, removeCredentialData } from "../context/auth";
 import { useRouter } from "expo-router";
 import React from "react";
 
@@ -13,7 +13,7 @@ export default function Index() {
         console.log("not found credential")
         return
       }
-      signInWithEmailAndPassword(email, password)
+      signInWithEmailAndPassword(email, password, true)
     })
     return
   }

@@ -41,7 +41,7 @@ async function removeCredentialData() {
 type AuthenticationContextType = {
   naiveSignIn: () => void;
   naiveSignOut: () => void;
-  signInWithEmailAndPassword: (email: string, password: string) => void;
+  signInWithEmailAndPassword: (email: string, password: string, fromStorage: boolean) => void;
   createUserWithEmailAndPassword: (email: string, password: string, userName: string, phone: string, dataFilled: boolean) => void;
   user: UserLoginData;
 }
@@ -98,7 +98,7 @@ function AuthProvider(props) {
           setAuth(null)
           removeCredentialData()
         },
-        signInWithEmailAndPassword: (email, password) => {
+        signInWithEmailAndPassword: (email, password, fromStorage: boolean = false) => {
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
               // Signed in
@@ -120,6 +120,12 @@ function AuthProvider(props) {
               const errorCode = error.code;
               const errorMessage = error.message;
               console.log(errorCode, errorMessage);
+              if (fromStorage) {
+                console.log("Error with current credential data")
+                removeCredentialData().then(() => {
+                  console.log("Remove bad credential Success!")
+                })
+              }
             });
         },
         createUserWithEmailAndPassword: (email, password, userName, phone, dataFilled) => {
@@ -158,4 +164,4 @@ function AuthProvider(props) {
   );
 }
 
-export { useAuth, AuthProvider, AuthenticationContextType, getCredentialData, storeCredentialData }
+export { useAuth, AuthProvider, AuthenticationContextType, getCredentialData, storeCredentialData, removeCredentialData }
