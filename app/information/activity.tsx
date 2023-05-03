@@ -1,3 +1,4 @@
+
 import {
   View,
   Text,
@@ -14,6 +15,8 @@ import { useState,useEffect } from "react"
 import Dropdown from "../../components/dropdown";
 import { useAuth } from "../../context/auth"
 import { GetUsers } from "../../firebaseServices/database/getUser";
+import { AntDesign } from '@expo/vector-icons'; 
+import { Entypo } from '@expo/vector-icons'; 
 
 
 export default function Activity() {
@@ -127,9 +130,7 @@ export default function Activity() {
 
         <View style={{ flexDirection: "row",marginTop:20 ,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>1. กิจกกรมระดับเบามาก</Text>
-          <Image style={{width:20,  height:20, marginLeft:10, marginTop:5}}
-            source={require("../../assets/images/activitypag/HelpCenter_icon.png")}
-          />
+          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
         </View>
 
 
@@ -141,9 +142,7 @@ export default function Activity() {
         </View>
         <View style={{ flexDirection: "row" ,marginTop:20,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>2. กิจกกรมระดับเบา</Text>
-          <Image style={{width:20,  height:20, marginLeft:10, marginTop:5}}
-            source={require("../../assets/images/activitypag/HelpCenter_icon.png")}
-          />
+          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
         </View>
 
       
@@ -158,9 +157,7 @@ export default function Activity() {
  
         <View style={{ flexDirection: "row", marginTop:20,marginLeft:5,marginBottom:15}}>
           <Text style={{ fontSize: 20 }}>3. กิจกกรมระดับปานกลาง</Text>
-          <Image style={{width:20,  height:20, marginLeft:10, marginTop:5}}
-            source={require("../../assets/images/activitypag/HelpCenter_icon.png")}
-          />
+          <AntDesign name="questioncircleo" size={20} color="black" style={{marginTop:5,marginLeft:5}}/>
         </View>
 
         <Dropdown label={"----------"} data={activity_Data3} onSelect={(selected) => { setActivity3(selected) }} backgroundColor={"#FFD7D7"} width={"100%"} />
@@ -179,10 +176,7 @@ export default function Activity() {
           <TouchableOpacity onPress={Onclick} style={styles.roundButton1}>
             <View style={styles.inroundButton1}>
               <View>
-                <Image
-                  source={require("../../assets/images/activitypag/plus-icon.png")}
-                  style={{ width: 23, height: 23 }}
-                />
+              <Entypo name="plus" size={40} color="black" />
               </View>
             </View>
           </TouchableOpacity>
