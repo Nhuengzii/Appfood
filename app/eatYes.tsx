@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, Pressable, ScrollView, Image } from "react-native";
-import { Unmatched, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import ButtonBack from "../components/ButtonBack";
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import React from "react";
@@ -28,7 +28,7 @@ export default function Oil() {
                 </View>
                 <View style={styles.containImageOut}>
                     <View style={styles.containImageIn}>
-                        <Image></Image>
+                        {/* image */}
                     </View>
                 </View>
                 <Text style={styles.textNutrition}>ข้อมูลโภชนาการ</Text>
@@ -58,7 +58,7 @@ export default function Oil() {
                     <Text style={styles.textAmountOfUser}>ปริมาณแอปเปิ้ล</Text>
                     <Text style={styles.textAmountOfUser}>ของคุณแจ่มใส</Text>
                     <View style={styles.boxOfImageAmount}>
-                        <Image></Image>
+                        {/* image */}
                     </View>
                 </View>
                 
@@ -69,10 +69,10 @@ export default function Oil() {
                     </View>
                     <View style={styles.containImageAmount}>
                         <View style={styles.boxOfImageAmountInside}>
-                            <Image></Image>
+                            {/* image */}
                         </View>
                         <View style={styles.boxOfImageAmountInside}>
-                            <Image></Image>
+                            {/* image */}
                         </View>
                     </View>
                 </View>

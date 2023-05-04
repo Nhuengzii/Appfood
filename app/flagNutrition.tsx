@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   },
   sectionPressable: {
     height: 1000,
+    alignItems: "center",
     //backgroundColor: "pink",
   },
   containFlour: {
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     padding: 0,
     width: 350,
     height: 100,
-    left: 30,
+    //left: 30,
     borderWidth: 7,
     borderColor: "#fff",
   },
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
     borderWidth: 7,
     borderColor: "#fff",
     flexDirection: "row",
-    left: 40,
+    //left: 40,
   },
   buttonVegFruitRight: {
     backgroundColor: "#C2B3F4",
@@ -198,17 +199,8 @@ const styles = StyleSheet.create({
     borderWidth: 7,
     borderColor: "#fff",
     flexDirection: "row",
-    left: 40,
+    //left: 40,
   },
-  /*buttonFruit: {
-      alignItems: "center",
-      margin: 2,
-      height: 100,
-      width: 160,
-      borderWidth: 7,
-      borderColor: "#fff",
-      flexDirection: "row",
-  },*/
   instandImageVeg: {
     position: "absolute",
     width: 50,
@@ -230,8 +222,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     left: 10,
   },
-
-
   titleFruit: {
     position: "absolute",
     fontSize: 20,
@@ -255,7 +245,7 @@ const styles = StyleSheet.create({
     borderWidth: 7,
     borderColor: "#fff",
     flexDirection: "column",
-    left: 60,
+    //left: 60,
     position: "relative",
   },
   buttonMilkRight: {
@@ -267,10 +257,9 @@ const styles = StyleSheet.create({
     borderWidth: 7,
     borderColor: "#fff",
     flexDirection: "column",
-    left: 60,
+    //left: 60,
     position: "relative",
   },
-
   containOil: {
     flex: 1 / 8,
     height: 100,
@@ -286,7 +275,7 @@ const styles = StyleSheet.create({
     borderWidth: 7,
     borderColor: "#fff",
     flexDirection: "column",
-    left: 130,
+    //left: 130,
     position: "relative",
   },
   instandImageOil: {

@@ -7,7 +7,7 @@ export default function flour() {
         <View style={styles.container}>
             <Text>Flour</Text>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

@@ -29,7 +29,7 @@ export default function FindMenu() {
               <Text style={styles.textInBox}>ผลไม้</Text>
             </View>
             <View>
-              <Image style={styles.image}></Image>
+              {/* image */}
             </View>
           </Pressable>
         </View>
@@ -40,7 +40,7 @@ export default function FindMenu() {
               <Text style={styles.textInBox}>ข้าว-แป้ง</Text>
             </View>
             <View>
-              <Image style={styles.image}></Image>
+              {/*<Image style={styles.image}></Image>*/}
             </View>
           </Pressable>
         </View>
