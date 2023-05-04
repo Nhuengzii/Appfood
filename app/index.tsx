@@ -23,7 +23,7 @@ export default function Index() {
       <Button title="ธงโภชนาการ" onPress={() => router.push("flagNutrition")}></Button>
       <Button title="personal" onPress={() => router.push("/information/personal")}></Button>
       <Button title="dailyActivity" onPress={() => router.push("/information/dailyActivity")} />
-      <Button title="fruit" onPress={() => router.push("/fruit")} />
+      <Button title="fruit2" onPress={() => router.push("/fruit")} />
       <Button title="flour" onPress={() => router.push("/flour")} />
     </View>
   );
