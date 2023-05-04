@@ -1,10 +1,91 @@
+import { Text, View, ScrollView, StyleSheet, Pressable } from "react-native";
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+
 import ButtonBack from "../components/ButtonBack";
 import SmileIcon from "../components/SmileIcon";
 
+type Fruit = {
+    name: string;
+    //image?: NodeRequire
+    id: number;
+}
 
-export default function fruit() {
+const DataFruit: Fruit[] = [
+    {
+        name: "กล้วย",
+        id: 1
+    },
+    {
+        name: "กล้วย",
+        id: 2
+    },
+    {
+        name: "กล้วย",
+        id: 3
+    },
+    {
+        name: "กล้วย",
+        id: 4
+    },
+    {
+        name: "กล้วย",
+        id: 5
+    },
+    {
+        name: "กล้วย",
+        id: 6
+    },
+    {
+        name: "กล้วย",
+        id: 7
+    },
+    {
+        name: "กล้วย",
+        id: 8
+    },
+    {
+        name: "กล้วย",
+        id: 9
+    },
+    {
+        name: "กล้วย",
+        id: 10
+    },
+    {
+        name: "กล้วย",
+        id: 11
+    },
+    {
+        name: "กล้วย",
+        id: 12
+    },
+    {
+        name: "กล้วย",
+        id: 13
+    },
+    {
+        name: "กล้วย",
+        id: 14
+    },
+    {
+        name: "กล้วย",
+        id: 15
+    },
+    {
+        name: "กล้วย",
+        id: 16
+    },
+    {
+        name: "กล้วย",
+        id: 17
+    },
+    {
+        name: "กล้วย",
+        id: 18
+    },
+];
+
+export default function FruitPage() {
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -12,7 +93,6 @@ export default function fruit() {
                     <View style={styles.containButton}>
                         <ButtonBack colorBg={"#126D68"} colorStyle={"white"}></ButtonBack>
                     </View>
-    
                         <View style={styles.containTitle}>
                             <Text style={styles.title}>ผลไม้</Text>
                         </View>
@@ -49,20 +129,23 @@ export default function fruit() {
                 </View>
             </ScrollView>
         </View>
-        
-    )
+    );
 }
+
+
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'green',
+        //backgroundColor: 'green',
         borderWidth: 4,
     },
     header: {
         backgroundColor: 'red',
         width: '100%',
         height: 150,
+        alignItems: 'center',
     },
 
     containButton: {
@@ -71,20 +154,33 @@ const styles = StyleSheet.create({
         height: 60,
         top: "35%",
         left: "5%",
+        alignSelf: 'flex-start',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     bottomHeader: {
-
+        backgroundColor: 'white',
+        width: 1000,
+        height: 1000,
+        borderRadius: 1000,
+        top: "40%",
+        //position: 'absolute',
+        zIndex: 1,
+        elevation: 1,
     },
 
     containTitle: {
         backgroundColor: '#FFA3A3',
         width: '50%',
         height: "50%",
-        top: "15%",
-        left: "25%",
+        top: "55%",
+        //left: "25%",
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 30,
+        position: 'absolute',
+        zIndex: 2,
+        elevation: 2,
         
     },
     title: {
@@ -106,7 +202,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     containTextGI: {
-        backgroundColor: 'yellow',
+        //backgroundColor: 'yellow',
         justifyContent: 'center',
         alignItems: 'center',
         top: "-20%"
@@ -126,7 +222,7 @@ const styles = StyleSheet.create({
         elevation: 3,
     },
     boxTextGILow: {
-        backgroundColor: 'pink',
+        backgroundColor: '#FFFFFF',
         alignItems: 'center',
         left: "-18%",
         paddingHorizontal: 10,
@@ -134,14 +230,14 @@ const styles = StyleSheet.create({
         //zIndex: 3,
     },
     boxTextGIMed: {
-        backgroundColor: 'pink',
+        backgroundColor: '#FFFFFF',
         alignItems: 'center',
         paddingHorizontal: 10,
         borderRadius: 10,
         //zIndex: 3,
     },
     boxTextGIHight: {
-        backgroundColor: 'pink',
+        backgroundColor: '#FFFFFF',
         alignItems: 'center',
         left: "18%",
         paddingHorizontal: 10,
