@@ -5,169 +5,143 @@ import SmileIcon from "../components/SmileIcon";
 import React, { useEffect } from 'react';
 import { LogBox } from 'react-native';
 
-type FruitL = {
-    nameL: string | undefined;
+type Flour = {
+    name: string | undefined;
     //image?: NodeRequire
     id: number;
 }
 
-type FruitR = {
-    nameR: string | undefined;
-    //image?: NodeRequire
-    id: number;
-}
+const DataFlourL: Flour[] = [
+    {
+        name: "เส้นเล็ก",
+        id: 1,
+    },
+    {
+        name: "ขนมจีน",
+        id: 2,
+    },
+    {
+        name: "ข้าวเหนียวนึ่ง",
+        id: 3,
+    },
+    {
+        name: "บะหมี่หยก",
+        id: 4,
+    },
+    {
+        name: "ลูกเดือย",
+        id: 5,
+    },
+    {
+        name: "ก๋วยจั๊บ",
+        id: 6,
+    },
+    {
+        name: "ข้าวกล้อง",
+        id: 7,
+    },
+    {
+        name: "แป้งข้าวจ้าว",
+        id: 8,
+    },
+    {
+        name: "เผือก",
+        id: 9,
+    },
+    {
+        name: "มันฝรั่ง",
+        id: 10,
+    },
+    {
+        name: "ถั่วดำ",
+        id: 11,
+    },
+    {
+        name: "ถั่วแดง",
+        id: 12,
+    },
+    {
+        name: "วุ้นเส้น",
+        id: 13,
+    },
+    {
+        name: "ข้าวเกรียบปลา",
+        id: 14,
+    },
+    {
+        name: "ขนมปังแซนวิช",
+        id: 15,
+    },
+]
+
+const DataFlourR: Flour[] = [
+    {
+        name: "เส้นใหญ่",
+        id: 1,
+    },
+    {
+        name: "ข้าวโพดหวาน",
+        id: 2,
+    },
+    {
+        name: "บะหมี่",
+        id: 3,
+    },
+    {
+        name: "ข้าวเหนียวดำ",
+        id: 4,
+    },
+    {
+        name: "เส้นหมี่",
+        id: 5,
+    },
+    {
+        name: "บะหมี่กึ่งสำเร็จรูป",
+        id: 6,
+    },
+    {
+        name: "ข้าวไรซ์เบอร์รี่",
+        id: 7,
+    },
+    {
+        name: "ข้าวขาวสำเร็จรูป",
+        id: 8,
+    },
+    {
+        name: "มันเทศ",
+        id: 9,
+    },
+    {
+        name: "แป้งสาคู",
+        id: 10,
+    },
+    {
+        name: "ถั่วเขียว",
+        id: 11,
+    },
+    {
+        name: "ถั่วเหลือง",
+        id: 12,
+    },
+    {
+        name: "ฟักทอง",
+        id: 13,
+    },
+    {
+        name: "ขนมปังกรอบ",
+        id: 14,
+    },
+    {
+        name: "ขนมปังโฮลวีท",
+        id: 15,
+    },
+    
+]
 
 
-const DataFruitR: FruitR[] = [
-    {
-        nameR: "กล้วยน้ำว้า",
-        id: 1
-    },
-    {
-        nameR: "ขนุนสุก",
-        id: 2
-    },
-    {
-        nameR: "แก้วมังกรชมพู",
-        id: 3
-    },
-    {
-        nameR: "แตงไทย",
-        id: 4
-    },
-    {
-        nameR: "ทุเรียนหมอนทอง",
-        id: 5
-    },
-    {
-        nameR: "สาลี่",
-        id: 6
-    },
-    {
-        nameR: "มะม่วงเขียวเสวย",
-        id: 7
-    },
-    {
-        nameR: "แคนตาลูปเหลือง",
-        id: 8
-    },
-    {
-        nameR: "มังคุด",
-        id: 9
-    },
-    {
-        nameR: "ลิ้นจี่",
-        id: 10
-    },
-    {
-        nameR: "ส้มโอ",
-        id: 11
-    },
-    {
-        nameR: "สับปะรดใหญ่",
-        id: 12
-    },
-    {
-        nameR: "เชอร์รี่",
-        id: 13
-    },
-    {
-        nameR: "แอปเปิ้ลฟูจิ",
-        id: 14
-    },
-    {
-        nameR: "สตรอเบอร์รี่",
-        id: 15
-    },
-    {
-        nameR: "องุ่นแดงไร้เมล็ด",
-        id: 16
-    },
-    {
-        nameR: "แอปเปิ้ลกาล่า",
-        id: 17
-    },
-
-];
 
 
 
-
-const DataFruitL: FruitL[] = [
-    {
-        nameL: "กล้วยไข่",
-        id: 1
-    },
-    {
-        nameL: "กล้วยหอม",
-        
-        id: 2
-    },
-    {
-        nameL: "แก้วมังกรขาว",
-        id: 3
-    },
-    {
-        nameL: "เงาะ",
-        id: 4
-    },
-    {
-        nameL: "แตงโม",
-        id: 5
-    },
-    {
-        nameL: "ฝรั่ง",
-        id: 6
-    },
-    {
-        nameL: "มะขามหวาน",
-        id: 7
-    },
-    {
-        nameL: "มะม่วงน้ำดอกไม้",
-        id: 8
-    },
-    {
-        nameL: "มะละกอสุก",
-        id: 9
-    },
-    {
-        nameL: "ลำไย",
-        id: 10
-    },
-    {
-        nameL: "ส้มเขียวหวาน",
-        id: 11
-    },
-    {
-        nameL: "สับปะรดภูแล",
-        id: 12
-    },
-    {
-        nameL: "ชมพู่",
-        id: 13
-    },
-    {
-        nameL: "องุ่นเขียว",
-        id: 14
-    },
-    {
-        nameL: "ลองกอง",
-        id: 15
-    },
-    {
-        nameL: "สละ",
-        id: 16
-    },
-    {
-        nameL: "แอปเปิ้ลเขียว",
-        id: 17
-    },
-    {
-        nameL: "กี่วี่",
-        id: 18
-    },
-];
 
 const Element = ({ name }) => (
     <View style={styles.containElement}>
@@ -181,11 +155,11 @@ const Element = ({ name }) => (
 );
 
 const renderElementL = ({ item }) => (
-    <Element name={item.nameL} />
+    <Element name={item.name}/>
 );
 
 const renderElementR = ({ item }) => (
-    <Element name={item.nameR} />
+    <Element name={item.name} />
 );
 
 
@@ -199,10 +173,10 @@ export default function FruitPage() {
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 <View style={styles.header}>
                     <View style={styles.containButton}>
-                        <ButtonBack colorBg={"#126D68"} colorStyle={"white"}></ButtonBack>
+                        <ButtonBack colorBg={"#A3461E"} colorStyle={"white"}></ButtonBack>
                     </View>
                         <View style={styles.containTitle}>
-                            <Text style={styles.title}>ผลไม้</Text>
+                            <Text style={styles.title}>ข้าวแป้ง</Text>
                         </View>
                     <View style={styles.bottomHeader}>
                     
@@ -236,15 +210,15 @@ export default function FruitPage() {
                         <View style={styles.sectionShowList}>
                             <View style={styles.containListLeft}>
                                 <FlatList
-                                    data={DataFruitL}
+                                    data={DataFlourL}
                                     renderItem={renderElementL}
                                     keyExtractor={item => item.id}
                                 />
                             </View>
                             <View style={styles.containListRight}>
                                 <FlatList
-                                    data={DataFruitR}
-                                    renderItem={renderElementR}
+                                    data={DataFlourR}
+                                    renderItem={renderElementL}
                                     keyExtractor={item => item.id}
                                 />
                             </View>
@@ -266,7 +240,7 @@ const styles = StyleSheet.create({
         borderWidth: 4,
     },
     header: {
-        backgroundColor: 'rgba(198, 242, 178, 0.65)',
+        backgroundColor: 'rgba(255, 115, 55, 0.65)',
         width: '100%',
         height: 150,
         alignItems: 'center',
@@ -295,7 +269,7 @@ const styles = StyleSheet.create({
     },
 
     containTitle: {
-        backgroundColor: '#FFA3A3',
+        backgroundColor: '#FFE0A3',
         width: '50%',
         height: "50%",
         top: "55%",
@@ -315,7 +289,7 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         //backgroundColor: 'blue',
-        height: 4300,
+        height: 3500,
     },
     containIndexSugar: {
         flex: 1/8,
@@ -327,7 +301,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     containTextGI: {
-        backgroundColor: 'yellow',
+        //backgroundColor: 'yellow',
         justifyContent: 'center',
         alignItems: 'center',
         top: "-42%"
@@ -373,7 +347,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
         flexDirection: 'row',
-        top: "22%",
+        top: "24%",
         width: '64%',
         height: "36%",
         maxHeight: 100,
@@ -389,9 +363,9 @@ const styles = StyleSheet.create({
         top: "60%",
         //backgroundColor: 'red',
         width: '100%',
-        flexDirection: 'row',
-        height: 3900,
+        height: 3200,
         position: 'absolute',
+        flexDirection: 'row',
     },
     containElement: {
         //backgroundColor: 'yellow',
@@ -400,6 +374,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingBottom: 20,
+        
+        
     },
     containListLeft: {
         //backgroundColor: 'green',
@@ -408,14 +384,17 @@ const styles = StyleSheet.create({
     containListRight: {
         //backgroundColor: 'blue',
         flex: 1/2,
+
+        
     },
     containPicElement: {
         backgroundColor: '#FFF',
         flex: 1/2,
-        width: '75%',
+        width: '80%',
         height: 150,
         padding: 10,
         borderRadius: 20,
+
     },
     containTitleElement: {
         backgroundColor: '#DCFFD9',
