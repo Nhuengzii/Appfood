@@ -7,7 +7,6 @@ import { LogBox } from 'react-native';
 
 type FruitL = {
     nameL: string | undefined;
-    
     //image?: NodeRequire
     id: number;
 }
